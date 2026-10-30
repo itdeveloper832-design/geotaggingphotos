@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Online EXIF Viewer — Free Photo Metadata & GPS Inspector</title>
+<meta content="Free online EXIF viewer. Inspect camera metadata, GPS location coordinates, shutter speed, ISO, and shooting details in your browser without uploading files." name="description"/>
+<link rel="canonical" href="https://www.geotaggingphotos.com/exif-viewer"/>
+<link rel="icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="shortcut icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="apple-touch-icon" href="/geotaggingphotos.png" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="google-site-verification" content="vow0IR_605uY_PGLRr5zcCivk_N1dp40r3WmvNFxmL8" />
+<meta name="msvalidate.01" content="207473D434A6B2FA4E2217EFA3CB53DB" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GeoTaggingPhotos.com" />
+<meta property="og:title" content="Online EXIF Viewer — Free Photo Metadata & GPS Inspector" />
+<meta property="og:description" content="Free online EXIF viewer. Inspect camera metadata, GPS location coordinates, shutter speed, ISO, and shooting details in your browser without uploading files." />
+<meta property="og:url" content="https://www.geotaggingphotos.com/exif-viewer" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Online EXIF Viewer — Free Photo Metadata & GPS Inspector" />
+<meta name="twitter:description" content="Free online EXIF viewer. Inspect camera metadata, GPS location coordinates, shutter speed, ISO, and shooting details in your browser without uploading files." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); }
+        .gradient-btn { background: linear-gradient(135deg, #2563EB, #1D4ED8); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/components.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<script src="/exif-parser.js"></script>
+<link rel="manifest" href="/manifest.json" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.geotaggingphotos.com/exif-viewer#webapp",
+      "url": "https://www.geotaggingphotos.com/exif-viewer",
+      "name": "Online EXIF & GPS Metadata Viewer",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All modern browsers (Chrome, Safari, Firefox, Edge)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online EXIF viewer. Inspect camera metadata, GPS location coordinates, shutter speed, ISO, and shooting details directly in your browser without uploading files.",
+      "browserRequirements": "Requires JavaScript. Supports HTML5 FileReader API, Leaflet Maps, and Exif.js.",
+      "featureList": [
+        "Inspect complete camera EXIF metadata and lens parameters",
+        "Decode GPS latitude, longitude, and altitude coordinates",
+        "Interactive photo capture location map preview",
+        "Check shutter speed, aperture, ISO, and timestamp data",
+        "100% client-side privacy with zero server uploads"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.geotaggingphotos.com/exif-viewer#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.geotaggingphotos.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "EXIF Viewer",
+          "item": "https://www.geotaggingphotos.com/exif-viewer"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.geotaggingphotos.com/exif-viewer#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I check if my photo contains hidden GPS coordinates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload your photo into our Online EXIF Viewer. The tool reads the file binary instantly and displays any embedded GPS latitude, longitude, altitude, and an interactive satellite map marker if location tags are present."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What camera settings are revealed by the EXIF viewer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The viewer extracts camera manufacturer, camera model, lens type, focal length, aperture (f-stop), shutter speed, ISO sensitivity, exposure bias, and original capture date and time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my photos uploaded to a server when checking EXIF data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All EXIF parsing is executed 100% client-side inside your browser memory using JavaScript. Your images never leave your local device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is some EXIF metadata missing from my photo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Metadata may be missing if location services were disabled during shooting, or if the photo was downloaded from social media platforms (like WhatsApp, Instagram, or Facebook) that automatically strip EXIF headers for privacy."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<meta name="theme-color" content="#2563EB" />
+<script src="/pwa.js" defer></script>
+</head>
+<body class="font-body-lg text-body-lg text-on-surface bg-background min-h-screen flex flex-col pt-16">
+<div id="header-placeholder"></div>
+
+<!-- Main Canvas -->
+<main class="flex-grow pt-8 pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="mb-8 text-center max-w-3xl mx-auto">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-3">
+    <span class="material-symbols-outlined text-sm">info</span>
+    Photo Metadata &amp; GPS Inspector
+</span>
+<h1 class="font-headline-lg text-3xl md:text-4xl font-bold mb-3 text-primary">Online EXIF Viewer &amp; Metadata Inspector</h1>
+<p class="text-on-surface-variant font-body-md text-base">Inspect hidden camera metadata, GPS location tags, shutter speed, aperture, ISO, and shooting timestamp directly in your browser without uploading files.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-1 flex flex-col gap-6">
+<div class="glass-panel rounded-2xl p-8 border-2 border-dashed border-outline-variant hover:border-secondary transition-colors duration-400 ease-out-expo flex flex-col items-center justify-center text-center cursor-pointer min-h-[220px]" id="drop-zone" onclick="document.getElementById('file-input').click()">
+<input accept="image/*" class="hidden" id="file-input" type="file"/>
+<div class="bg-surface-container rounded-full p-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-secondary">image_search</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1">Select Photo</h3>
+<p class="text-on-surface-variant font-body-md text-sm mb-2">Drag and drop or click to inspect</p>
+<p class="text-outline font-mono-data text-xs uppercase">JPG, PNG, WEBP, TIFF</p>
+</div>
+
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-4">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">location_on</span> GPS Coordinates &amp; Location
+            </h3>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-label-md text-sm">Latitude</span>
+<span id="exif-lat" class="font-mono-data text-primary font-bold">Select a photo</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-label-md text-sm">Longitude</span>
+<span id="exif-lng" class="font-mono-data text-primary font-bold">Select a photo</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-label-md text-sm">Altitude</span>
+<span id="exif-alt" class="font-mono-data text-primary">--</span>
+</div>
+<div class="flex flex-col pt-1">
+<span class="text-on-surface-variant font-label-md text-xs uppercase mb-1">Detected Location Name</span>
+<span id="exif-place-name" class="font-body-md text-primary text-xs font-semibold">Select a photo</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="md:col-span-2 flex flex-col gap-6">
+<div id="exif-map-card" class="glass-panel rounded-2xl p-4 overflow-hidden border border-outline-variant/30 hidden">
+    <h4 class="font-bold text-primary text-sm mb-2 flex items-center gap-2">
+        <span class="material-symbols-outlined text-secondary text-base">map</span> Photo Capture Map Location
+    </h4>
+    <div id="exif-map" class="w-full h-64 rounded-xl overflow-hidden border border-outline-variant/20"></div>
+</div>
+
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-6">
+<h3 class="font-headline-lg text-headline-lg text-primary border-b border-outline-variant/30 pb-4">Extracted Camera Metadata</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Camera Make</p>
+<p id="exif-make" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Camera Model</p>
+<p id="exif-model" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Lens</p>
+<p id="exif-lens" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Focal Length</p>
+<p id="exif-focal" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Aperture</p>
+<p id="exif-aperture" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Shutter Speed</p>
+<p id="exif-shutter" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">ISO Speed</p>
+<p id="exif-iso" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4">
+<p class="text-on-surface-variant text-xs uppercase font-label-md">Date Taken</p>
+<p id="exif-date" class="font-headline-lg-mobile text-primary text-lg">--</p>
+</div>
+</div>
+</div>
+</div>
+
+    <!-- Comprehensive SEO Content Section (500+ Words) -->
+    <article class="mt-16 border-t border-outline-variant/30 pt-16 space-y-16">
+        <!-- Section 1: Explanation -->
+        <div class="space-y-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                EXIF Metadata Guide
+            </span>
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">What is EXIF Metadata and What Information is Stored in Photos?</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                EXIF (Exchangeable Image File Format) is a global standard for digital photography metadata used by digital cameras, smartphones, drones, and imaging software. Every time a photograph is taken, embedded technical headers are recorded directly inside the file containing vital technical parameters about the camera hardware, exposure settings, and geographic coordinates:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="flex items-center gap-2 text-secondary font-bold text-base">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                        <h3>Camera Hardware Details</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Extracts camera manufacturer make, exact model name, lens specifications, focal length, color space, orientation, and resolution details.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="flex items-center gap-2 text-secondary font-bold text-base">
+                        <span class="material-symbols-outlined">tune</span>
+                        <h3>Exposure Settings</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Inspects shutter speed, aperture (f-number), ISO sensitivity, exposure compensation, metering mode, flash status, and white balance parameters.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="flex items-center gap-2 text-secondary font-bold text-base">
+                        <span class="material-symbols-outlined">pin_drop</span>
+                        <h3>GPS Location Tags</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Decodes embedded GPS latitude, longitude, altitude, GPS timestamps, and satellite positioning precision headers recorded during capture.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Why Inspect EXIF -->
+        <div class="space-y-6">
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Why Inspect Photo EXIF Metadata?</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                Inspecting metadata provides essential insights for photographers, digital investigators, privacy advocates, and e-commerce professionals alike:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">shield</span>
+                        Privacy &amp; Location Security Audits
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Check whether your personal photos contain precise residential GPS coordinates or sensitive capture timestamps before sharing them online or sending them to third parties.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">school</span>
+                        Photography Skill &amp; Lighting Analysis
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Analyze the exact shutter speed, ISO, and lens aperture settings of inspiring photographs to understand lighting techniques and master manual camera control.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">verified_user</span>
+                        Forensic &amp; Copyright Verification
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Verify camera serial numbers, original creation dates, and editing software signatures to prove photo copyright ownership or identify image tampering.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">dataset</span>
+                        GIS &amp; Drone Asset Cataloging
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Audit raw spatial coordinates embedded by UAV drones and mobile cameras for seamless import into ArcGIS, QGIS, or digital asset management software.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Privacy Assurance -->
+        <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 text-center space-y-4">
+            <h2 class="font-display text-2xl font-bold text-primary">Direct Browser-Based EXIF Parsing</h2>
+            <p class="text-on-surface-variant max-w-2xl mx-auto text-base leading-relaxed">
+                GeoTaggingPhotos reads your selected image file directly inside your browser memory without uploading it to external servers. Your photo files remain completely on your local device throughout the metadata inspection process.
+            </p>
+        </div>
+
+        <!-- Section 4: Frequently Asked Questions (AEO Optimized) -->
+        <div class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-2">
+                    <span class="material-symbols-outlined text-sm">help</span>
+                    FAQ
+                </span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Frequently Asked Questions</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Common questions about viewing photo metadata and inspecting embedded camera EXIF tags.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">How can I check if my photo contains hidden GPS coordinates?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Upload your photo into our Online EXIF Viewer. The tool reads the file binary instantly and displays any embedded GPS latitude, longitude, altitude, and an interactive satellite map marker if location tags are present.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">What camera settings are revealed by the EXIF viewer?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">The viewer extracts camera manufacturer, camera model, lens type, focal length, aperture (f-stop), shutter speed, ISO sensitivity, exposure bias, and original capture date and time.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">Are my photos uploaded to a server when checking EXIF data?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">No. All EXIF parsing is executed 100% client-side inside your browser memory using JavaScript. Your images never leave your local device.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">Why is some EXIF metadata missing from my photo?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Metadata may be missing if location services were disabled during shooting, or if the photo was downloaded from social media platforms (like WhatsApp, Instagram, or Facebook) that automatically strip EXIF headers for privacy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Cross-Linking & Next Steps -->
+        <div class="border-t border-outline-variant/30 pt-10">
+            <h2 class="font-display text-2xl font-bold text-primary mb-3">Explore Related Geotagging &amp; Metadata Tools</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-6">Need to add missing coordinates, batch tag multiple photos, or locate capture points on interactive maps? Try our specialized tools:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="/add-geotag" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">add_location_alt</span>
+                        <h4>Add GPS Coordinates</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Inject precise latitude, longitude, and custom EXIF tags with interactive map pin placement.</p>
+                </a>
+
+                <a href="/bulk-geotagging" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">collections</span>
+                        <h4>Bulk Photo Geotagging</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Apply global GPS coordinates across hundreds of photos simultaneously and download as a ZIP archive.</p>
+                </a>
+
+                <a href="/image-location-finder" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">travel_explore</span>
+                        <h4>Photo Location Finder</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Display exact photo capture coordinates and reverse lookup street addresses on satellite maps.</p>
+                </a>
+            </div>
+        </div>
+    </article>
+</main>
+
+<div id="footer-placeholder">
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-12 px-margin-mobile md:px-margin-desktop mt-auto">
+<div class="max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter">
+<div class="col-span-2 lg:col-span-2 flex flex-col gap-4">
+<a href="/" class="font-display text-headline-lg-mobile text-primary hover:opacity-80 transition-opacity flex items-center gap-2.5 group" aria-label="GeoTaggingPhotos Homepage">
+<img src="/geotaggingphotos.png" alt="GeoTaggingPhotos Logo" class="w-8 h-8 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105" />
+<span>GeoTaggingPhotos</span>
+</a>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                    Professional metadata management tools for modern workflows.
+                </p>
+
+<p class="text-xs text-on-surface-variant mt-2">Independent browser tools for photo GPS and metadata workflows.</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-3">
+                    © 2026 GeoTaggingPhotos. All rights reserved.
+                </p>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Tools</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/add-geotag">Add Geotag</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Company</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/about-us">About Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/blog">Blog</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact-us">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/faq">FAQ &amp; Help</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Regional</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-usa">USA Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-uk">UK Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-australia">Australia Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-canada">Canada Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-germany">Germany Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-pakistan">Pakistan Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-india">India Services</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/terms-of-service">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/cookie-policy">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    let exifMap = null;
+    let exifMarker = null;
+
+    const blueIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    async function reverseGeocodeExifLocation(lat, lng) {
+        const placeEl = document.getElementById('exif-place-name');
+        if (placeEl) placeEl.innerText = "⏳ Looking up location name...";
+        try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`);
+            if (!res.ok) throw new Error("Reverse geocoding failed");
+            const data = await res.json();
+            if (data && data.display_name) {
+                const placeName = data.display_name;
+                if (placeEl) placeEl.innerText = placeName;
+                return placeName;
+            }
+        } catch (err) {
+            console.warn("Reverse geocode error:", err);
+        }
+        const fallback = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+        if (placeEl) placeEl.innerText = fallback;
+        return fallback;
+    }
+
+    if (dropZone && fileInput) {
+        dropZone.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+                fileInput.click();
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (fileInput.files && fileInput.files[0]) {
+                handleExifFile(fileInput.files[0]);
+            }
+        });
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            let files = e.dataTransfer.files;
+            if (files && files[0]) {
+                handleExifFile(files[0]);
+            }
+        }, false);
+
+        function handleExifFile(file) {
+            const imageUrl = URL.createObjectURL(file);
+            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+
+            dropZone.innerHTML = `
+                <div class="relative w-full h-full flex flex-col items-center justify-center p-2">
+                    <img src="${imageUrl}" alt="${file.name}" class="max-h-[160px] w-auto object-contain rounded-xl shadow-md mb-2" />
+                    <span class="font-bold text-sm text-primary truncate max-w-full">${file.name}</span>
+                    <span class="text-xs font-mono-data text-on-surface-variant">${fileSizeMB} MB</span>
+                    <button type="button" onclick="location.reload()" class="mt-2 text-xs text-secondary hover:underline font-semibold flex items-center gap-1">
+                        <span class="material-symbols-outlined text-xs">refresh</span> Select Another
+                    </button>
+                </div>
+            `;
+
+            parsePhotoExifData(file, async (data, err) => {
+                if (err || !data) {
+                    console.warn("Could not parse EXIF:", err);
+                    document.getElementById('exif-lat').innerText = 'Not Found';
+                    document.getElementById('exif-lng').innerText = 'Not Found';
+                    document.getElementById('exif-alt').innerText = 'N/A';
+                    if (document.getElementById('exif-place-name')) {
+                        document.getElementById('exif-place-name').innerText = 'No GPS Metadata';
+                    }
+                    const mapCard = document.getElementById('exif-map-card');
+                    if (mapCard) mapCard.classList.add('hidden');
+                    return;
+                }
+
+                document.getElementById('exif-lat').innerText = data.latFormatted;
+                document.getElementById('exif-lng').innerText = data.lngFormatted;
+                document.getElementById('exif-alt').innerText = data.altitude;
+
+                document.getElementById('exif-make').innerText = data.make;
+                document.getElementById('exif-model').innerText = data.model;
+                document.getElementById('exif-lens').innerText = data.lens;
+                document.getElementById('exif-focal').innerText = data.focalLength;
+                document.getElementById('exif-aperture').innerText = data.aperture;
+                document.getElementById('exif-shutter').innerText = data.shutter;
+                document.getElementById('exif-iso').innerText = data.iso;
+                document.getElementById('exif-date').innerText = data.dateTaken;
+
+                const mapCard = document.getElementById('exif-map-card');
+                if (data.hasGps && typeof data.latitude === 'number' && typeof data.longitude === 'number') {
+                    if (mapCard) mapCard.classList.remove('hidden');
+                    const mapEl = document.getElementById('exif-map');
+                    if (mapEl && window.L) {
+                        if (!exifMap) {
+                            exifMap = L.map('exif-map').setView([data.latitude, data.longitude], 14);
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '© OpenStreetMap contributors'
+                            }).addTo(exifMap);
+                        } else {
+                            exifMap.setView([data.latitude, data.longitude], 14);
+                        }
+
+                        if (exifMarker) {
+                            exifMap.removeLayer(exifMarker);
+                        }
+
+                        exifMarker = L.marker([data.latitude, data.longitude], { icon: blueIcon }).addTo(exifMap);
+                        exifMarker.bindPopup(`<b>Photo Location</b><br>Lat: ${data.latitude.toFixed(6)}<br>Lng: ${data.longitude.toFixed(6)}<br>⏳ Fetching place name...`).openPopup();
+
+                        setTimeout(() => {
+                            if (exifMap) exifMap.invalidateSize();
+                        }, 250);
+
+                        const placeName = await reverseGeocodeExifLocation(data.latitude, data.longitude);
+                        exifMarker.setPopupContent(`<b>Photo Location</b><br>📍 <b>${placeName}</b><br>Lat: ${data.latitude.toFixed(6)}<br>Lng: ${data.longitude.toFixed(6)}`).openPopup();
+                    }
+                } else {
+                    if (document.getElementById('exif-place-name')) {
+                        document.getElementById('exif-place-name').innerText = 'No GPS Metadata';
+                    }
+                    if (mapCard) mapCard.classList.add('hidden');
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

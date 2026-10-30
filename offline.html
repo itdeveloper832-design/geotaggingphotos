@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offline Mode | GeoTaggingPhotos</title>
+<meta content="You are currently offline. GeoTaggingPhotos supports local browser-based photo processing and EXIF editing." name="description"/>
+<link rel="icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="shortcut icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="apple-touch-icon" href="/geotaggingphotos.png" />
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#2563EB" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+<script src="/components.js"></script>
+<script src="/pwa.js" defer></script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased pt-16">
+<div id="header-placeholder"></div>
+
+<main class="flex-grow flex items-center justify-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+    <div class="glass-card max-w-2xl w-full p-8 md:p-12 rounded-3xl text-center space-y-6 border border-outline-variant/30 shadow-xl relative overflow-hidden">
+        <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 mx-auto shadow-sm">
+            <span class="material-symbols-outlined text-5xl">wifi_off</span>
+        </div>
+
+        <div class="space-y-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 rounded-full border border-amber-300">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                Offline Mode Active
+            </span>
+            <h1 class="font-display text-3xl md:text-4xl font-bold text-primary">You're Offline</h1>
+            <p class="text-on-surface-variant text-base md:text-lg max-w-lg mx-auto">
+                GeotaggingPhotos processes photos directly in your browser. Local geotagging and EXIF editing remain fully available offline!
+            </p>
+        </div>
+
+        <div class="bg-surface-container-lowest/80 border border-outline-variant/40 rounded-2xl p-5 text-left text-sm text-on-surface space-y-3 shadow-inner">
+            <div class="flex items-center gap-2 font-bold text-primary">
+                <span class="material-symbols-outlined text-secondary">verified_user</span>
+                <span>Available Local Tools Offline:</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <a href="/add-geotag" class="flex items-center gap-2.5 p-3 rounded-xl bg-surface hover:bg-secondary/10 border border-outline-variant/20 transition-all font-medium group">
+                    <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">add_location</span>
+                    <span>Add Geotag</span>
+                </a>
+                <a href="/bulk-geotagging" class="flex items-center gap-2.5 p-3 rounded-xl bg-surface hover:bg-secondary/10 border border-outline-variant/20 transition-all font-medium group">
+                    <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">photo_library</span>
+                    <span>Bulk Geotagging</span>
+                </a>
+                <a href="/exif-viewer" class="flex items-center gap-2.5 p-3 rounded-xl bg-surface hover:bg-secondary/10 border border-outline-variant/20 transition-all font-medium group">
+                    <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">info</span>
+                    <span>EXIF Viewer</span>
+                </a>
+                <a href="/image-location-finder" class="flex items-center gap-2.5 p-3 rounded-xl bg-surface hover:bg-secondary/10 border border-outline-variant/20 transition-all font-medium group">
+                    <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">search</span>
+                    <span>Location Finder</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="window.location.reload()" class="gradient-btn w-full sm:w-auto px-6 py-3 rounded-xl text-white font-semibold flex items-center justify-center gap-2 shadow-md">
+                <span class="material-symbols-outlined text-lg">refresh</span>
+                Retry Connection
+            </button>
+            <a href="/" class="w-full sm:w-auto px-6 py-3 rounded-xl border border-outline-variant hover:bg-white/10 text-on-surface font-semibold flex items-center justify-center gap-2 transition-colors">
+                <span class="material-symbols-outlined text-lg">home</span>
+                Back to Home
+            </a>
+        </div>
+    </div>
+</main>
+
+<div id="footer-placeholder"></div>
+</body>
+</html>

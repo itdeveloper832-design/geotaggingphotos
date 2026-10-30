@@ -1,0 +1,55 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/how-to-add-gps-coordinates-to-photos",
+      "destination": "/blog/how-to-add-gps-coordinates-to-photos",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-add-location-to-a-photo",
+      "destination": "/blog/how-to-add-location-to-a-photo",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata",
+      "destination": "/blog/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/how-to-add-location-to-a-photo",
+      "destination": "/blog/how-to-add-location-to-a-photo.html"
+    },
+    {
+      "source": "/blog/how-to-add-gps-coordinates-to-photos",
+      "destination": "/blog/how-to-add-gps-coordinates-to-photos.html"
+    },
+    {
+      "source": "/blog/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata",
+      "destination": "/blog/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata.html"
+    },
+    {
+      "source": "/blog/how-to-check-if-a-photo-has-gps-coordinates",
+      "destination": "/blog/how-to-check-if-a-photo-has-gps-coordinates.html"
+    },
+    {
+      "source": "/blog/how-to-geotag-photos-on-iphone-and-android",
+      "destination": "/blog/how-to-geotag-photos-on-iphone-and-android.html"
+    },
+    {
+      "source": "/blog/photo-geotagging-for-local-seo-and-google-maps",
+      "destination": "/blog/photo-geotagging-for-local-seo-and-google-maps.html"
+    },
+    {
+      "source": "/blog/how-to-bulk-geotag-photos-online",
+      "destination": "/blog/how-to-bulk-geotag-photos-online.html"
+    }
+  ]
+}

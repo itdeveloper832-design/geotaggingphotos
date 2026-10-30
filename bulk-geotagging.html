@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Geotagging Tool — Batch Geotag Multiple Photos Free</title>
+<meta content="Bulk geotag multiple photos online for free. Batch inject GPS coordinates, latitude, longitude, and EXIF metadata into hundreds of images with ZIP download." name="description"/>
+<link rel="canonical" href="https://www.geotaggingphotos.com/bulk-geotagging"/>
+<link rel="icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="shortcut icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="apple-touch-icon" href="/geotaggingphotos.png" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="google-site-verification" content="vow0IR_605uY_PGLRr5zcCivk_N1dp40r3WmvNFxmL8" />
+<meta name="msvalidate.01" content="207473D434A6B2FA4E2217EFA3CB53DB" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GeoTaggingPhotos.com" />
+<meta property="og:title" content="Bulk Geotagging Tool — Batch Geotag Multiple Photos Free" />
+<meta property="og:description" content="Bulk geotag multiple photos online for free. Batch inject GPS coordinates, latitude, longitude, and EXIF metadata into hundreds of images with ZIP download." />
+<meta property="og:url" content="https://www.geotaggingphotos.com/bulk-geotagging" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bulk Geotagging Tool — Batch Geotag Multiple Photos Free" />
+<meta name="twitter:description" content="Bulk geotag multiple photos online for free. Batch inject GPS coordinates, latitude, longitude, and EXIF metadata into hundreds of images with ZIP download." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gradient-btn:hover {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+            transform: scale(1.02);
+        }
+</style>
+<script src="/components.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/piexifjs@1.0.6/piexif.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="/geotag-exif.js"></script>
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#2563EB" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.geotaggingphotos.com/bulk-geotagging#webapp",
+      "url": "https://www.geotaggingphotos.com/bulk-geotagging",
+      "name": "Bulk Photo Geotagging Tool",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All modern browsers (Chrome, Safari, Firefox, Edge)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Bulk geotag multiple photos online for free. Batch inject GPS coordinates, latitude, longitude, and EXIF metadata into hundreds of images with instant ZIP archive export.",
+      "browserRequirements": "Requires JavaScript. Supports HTML5 Canvas, JSZip, and Geolocation API.",
+      "featureList": [
+        "Batch geotag up to 500 photos simultaneously",
+        "Global GPS coordinate preset application",
+        "Automatic device location detection",
+        "One-click packaged ZIP archive download",
+        "100% client-side browser processing without server uploads"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.geotaggingphotos.com/bulk-geotagging#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.geotaggingphotos.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bulk Geotagging",
+          "item": "https://www.geotaggingphotos.com/bulk-geotagging"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.geotaggingphotos.com/bulk-geotagging#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many photos can I geotag in a single bulk batch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can upload and batch-process up to 500 photos simultaneously per session directly in your browser without file size paywalls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I download the batch of geotagged images?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once you enter your coordinate preset and click 'Process & Download ZIP', all updated images are automatically compiled into a single organized ZIP archive and downloaded to your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my batch photo uploads sent to a cloud server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All batch file reading, canvas rendering, EXIF GPS injection, and ZIP packaging occur 100% locally inside your web browser. No image files are transmitted to external servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What image formats are supported for bulk geotagging?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The bulk geotagger supports JPG, JPEG, PNG, WebP, and TIFF image formats, applying consistent GPS coordinates and optional metadata across all files."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script src="/pwa.js" defer></script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16">
+<div id="header-placeholder"></div>
+
+<!-- Main Content -->
+<main class="flex-grow pt-8 pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<header class="mb-8 text-center max-w-3xl mx-auto">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-3">
+    <span class="material-symbols-outlined text-sm">collections</span>
+    High-Throughput Batch Processing
+</span>
+<h1 class="font-headline-lg text-3xl md:text-4xl font-bold mb-3 text-primary">Bulk Photo Geotagging Tool</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Upload up to 500 photos at once, apply uniform GPS coordinates globally, and download your entire collection as an organized ZIP archive.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-12 border-2 border-dashed border-outline-variant hover:border-secondary transition-colors duration-400 ease-out-expo flex flex-col items-center justify-center text-center cursor-pointer min-h-[250px]" id="bulk-drop-zone" onclick="document.getElementById('file-input').click()">
+<span class="material-symbols-outlined text-[48px] text-secondary mb-4 opacity-80">cloud_upload</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2 text-primary">Drag &amp; Drop Photos Here</h3>
+<p class="text-on-surface-variant mb-6">Supports JPG, PNG, TIFF, WebP. Max 500 files per batch.</p>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-lg font-label-md hover:bg-surface-container-highest transition-colors">Browse Files</button>
+<input class="hidden" id="bulk-file-input" multiple="" type="file"/>
+</div>
+<div class="glass-panel rounded-xl overflow-hidden flex-grow flex flex-col">
+<div class="bg-surface-container-low px-4 py-3 border-b border-outline-variant/30 flex justify-between items-center">
+<span id="bulk-queue-count" class="font-label-md text-label-md text-on-surface-variant">No files selected</span>
+<button id="bulk-clear-queue" type="button" onclick="clearBulkQueue()" class="text-error font-label-md text-label-md hover:underline">Clear Queue</button>
+</div>
+<div class="overflow-y-auto max-h-[300px]">
+<table class="w-full text-left">
+<thead class="bg-surface-container-lowest sticky top-0 border-b border-outline-variant/30">
+<tr>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant w-12">#</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant">Filename</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant">Size</th>
+<th class="px-4 py-3 font-label-md text-label-md text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody id="bulk-queue-body" class="divide-y divide-outline-variant/20"><tr><td colspan="4" class="px-4 py-8 text-center text-sm text-on-surface-variant">Select photos to build a local batch.</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-6 space-y-4">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-secondary">public</span>
+                        Preset Coordinates
+                    </h3>
+<button type="button" onclick="applyBulkCurrentLocation()" class="text-xs font-semibold text-secondary bg-secondary/10 hover:bg-secondary/20 px-2.5 py-1 rounded-lg flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">my_location</span>
+                        Current Location
+                    </button>
+</div>
+<p class="text-on-surface-variant text-sm">Apply these coordinates to all uploaded files instantly.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Latitude</label>
+<input id="bulk-latitude" class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-3 py-2 font-mono-data text-mono-data focus:border-secondary outline-none" type="text" value="" placeholder="e.g. 37.774929"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Longitude</label>
+<input id="bulk-longitude" class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-3 py-2 font-mono-data text-mono-data focus:border-secondary outline-none" type="text" value="" placeholder="e.g. -122.419416"/>
+</div>
+</div>
+
+<!-- Quick Actions Bar -->
+<div class="flex flex-wrap gap-2 pt-1 border-t border-outline-variant/20">
+    <button type="button" onclick="copyBulkCoordinates()" class="text-xs font-medium text-on-surface-variant bg-surface-container-lowest hover:bg-surface-container-high px-2.5 py-1.5 rounded-lg border border-outline-variant/30 flex items-center gap-1 transition-colors">
+        <span class="material-symbols-outlined text-sm text-secondary">content_copy</span> Copy
+    </button>
+    <button type="button" onclick="pasteBulkCoordinates()" class="text-xs font-medium text-on-surface-variant bg-surface-container-lowest hover:bg-surface-container-high px-2.5 py-1.5 rounded-lg border border-outline-variant/30 flex items-center gap-1 transition-colors">
+        <span class="material-symbols-outlined text-sm text-secondary">content_paste</span> Paste
+    </button>
+    <button type="button" onclick="clearBulkGps()" class="text-xs font-medium text-error bg-error/5 hover:bg-error/10 px-2.5 py-1.5 rounded-lg border border-error/20 flex items-center gap-1 transition-colors">
+        <span class="material-symbols-outlined text-sm">location_off</span> Clear GPS
+    </button>
+</div>
+
+<div id="bulk-geo-status" class="text-xs text-emerald-600 font-medium hidden flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span id="bulk-geo-status-text">Location updated</span>
+</div>
+
+<!-- Privacy Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-xs font-medium">
+    <span class="material-symbols-outlined text-sm">lock</span>
+    <span>🔒 Processed directly in your browser without uploading image files to a server.</span>
+</div>
+
+<button type="button" onclick="processBulkGeotagging()" class="w-full gradient-btn text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined">bolt</span>
+                        Process &amp; Download ZIP
+                    </button>
+</div>
+
+<!-- EXPANDABLE ADVANCED METADATA CARD (OPTIONAL) -->
+<div class="glass-panel rounded-xl border border-outline-variant/30 overflow-hidden shadow-sm transition-all duration-300">
+    <button type="button" onclick="toggleBulkAdvancedMetadata()" class="w-full p-4 flex items-center justify-between bg-surface-container-lowest hover:bg-surface-container-low transition-colors text-left border-b border-outline-variant/20">
+        <div class="flex items-center gap-2.5">
+            <div class="p-1.5 rounded-lg bg-secondary/10 text-secondary">
+                <span class="material-symbols-outlined text-lg">tune</span>
+            </div>
+            <div>
+                <h4 class="font-bold text-primary text-sm">Advanced Metadata (Optional)</h4>
+                <p class="text-[11px] text-on-surface-variant">Title, keywords, copyright, address &amp; batch settings</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+            <span class="text-[10px] font-semibold text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">Optional</span>
+            <span id="bulk-advanced-toggle-icon" class="material-symbols-outlined text-primary text-base transition-transform duration-300">expand_more</span>
+        </div>
+    </button>
+
+    <div id="bulk-advanced-metadata-panel" class="hidden p-5 space-y-4 bg-surface text-xs">
+        <div>
+            <label class="block uppercase font-semibold text-on-surface-variant text-[10px] mb-1">Batch Photo Title</label>
+            <input type="text" id="bulk-meta-title" class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/40 focus:outline-none focus:border-secondary" placeholder="Site Audit Photo" />
+        </div>
+        <div>
+            <label class="block uppercase font-semibold text-on-surface-variant text-[10px] mb-1">Keywords / Tags</label>
+            <input type="text" id="bulk-meta-keywords" class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/40 focus:outline-none focus:border-secondary" placeholder="survey, site, audit, aerial" />
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div>
+                <label class="block uppercase font-semibold text-on-surface-variant text-[10px] mb-1">Author</label>
+                <input type="text" id="bulk-meta-author" class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/40 focus:outline-none focus:border-secondary" placeholder="John Smith" />
+            </div>
+            <div>
+                <label class="block uppercase font-semibold text-on-surface-variant text-[10px] mb-1">Copyright</label>
+                <input type="text" id="bulk-meta-copyright" class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/40 focus:outline-none focus:border-secondary" placeholder="© 2026 John Smith" />
+            </div>
+        </div>
+        <div class="p-3 bg-secondary/5 border border-secondary/20 rounded-lg space-y-1.5 text-[11px]">
+            <div class="font-semibold text-secondary flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">info</span>
+                <span>Coordinates will be applied to all uploaded images.</span>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked class="rounded text-secondary" />
+                <span>Apply coordinates to all images in batch</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked class="rounded text-secondary" />
+                <span>Keep original file timestamps</span>
+            </label>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+    <!-- Comprehensive SEO Content Section (500+ Words) -->
+    <article class="mt-16 border-t border-outline-variant/30 pt-16 space-y-16">
+        <!-- Section 1: Step-by-Step Guide -->
+        <div class="space-y-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full">
+                <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                Step-by-Step Batch Guide
+            </span>
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">How to Geotag Multiple Photos in Bulk Online</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                Manually injecting GPS coordinates into dozens of individual photos can take hours. Our browser-based <strong>Bulk Geotagging Tool</strong> lets you apply latitude, longitude, altitude, and custom EXIF metadata across hundreds of images simultaneously in three simple steps:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">1</div>
+                    <h3 class="font-bold text-primary text-base">Batch Upload Photos</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Select or drag up to 500 images into the drop zone. Supports JPG, JPEG, PNG, WebP, and TIFF file formats up to 50MB each.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">2</div>
+                    <h3 class="font-bold text-primary text-base">Set Global Coordinates</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Enter your target latitude and longitude values or click "Current Location". The coordinates are automatically applied across every queued file.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">3</div>
+                    <h3 class="font-bold text-primary text-base">Export as ZIP Archive</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Click "Process &amp; Download ZIP". The tool embeds binary EXIF GPS data into every image and packages your files into a single ZIP download.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Industry Use Cases -->
+        <div class="space-y-6">
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Who Needs Bulk Photo Geotagging?</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                Batch metadata processing is a vital productivity multiplier across professional photography, drone surveying, and digital asset management:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">real_estate_agent</span>
+                        Real Estate &amp; Commercial Galleries
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Geotag entire residential or commercial property galleries in one action. Ensure interior, exterior, and floorplan photos carry unified GPS coordinates for MLS syndication and map search indexing.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">flight</span>
+                        Drone Pilots &amp; UAV Survey Teams
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Assign uniform geographic reference coordinates across aerial survey photo sets before importing into photogrammetry software like Pix4D, Agisoft Metashape, or QGIS.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">store</span>
+                        Multi-Location Local SEO Agencies
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Quickly tag batches of photos for corporate branches, franchise store locations, and client job sites to organize visual assets by city and region.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">construction</span>
+                        Construction &amp; Engineering Audits
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Maintain verifiable, location-stamped visual records for construction milestones, contractor safety compliance, and environmental field surveys.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Privacy & Speed -->
+        <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 text-center space-y-4">
+            <h2 class="font-display text-2xl font-bold text-primary">Fast, Secure Browser-Side Processing</h2>
+            <p class="text-on-surface-variant max-w-2xl mx-auto text-base leading-relaxed">
+                All batch image operations are executed directly inside your web browser. Your images are never transmitted to external cloud servers, ensuring full data privacy, zero upload delays, and no server bandwidth throttling.
+            </p>
+        </div>
+
+        <!-- Section 4: Frequently Asked Questions (AEO Optimized) -->
+        <div class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-2">
+                    <span class="material-symbols-outlined text-sm">help</span>
+                    FAQ
+                </span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Frequently Asked Questions</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Common questions about batch geotagging photos and managing large image collections.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">How many photos can I geotag in a single bulk batch?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">You can upload and batch-process up to 500 photos simultaneously per session directly in your browser without file size paywalls.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">How do I download the batch of geotagged images?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Once you enter your coordinate preset and click 'Process &amp; Download ZIP', all updated images are automatically compiled into a single organized ZIP archive and downloaded to your device.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">Are my batch photo uploads sent to a cloud server?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">No. All batch file reading, canvas rendering, EXIF GPS injection, and ZIP packaging occur 100% locally inside your web browser. No image files are transmitted to external servers.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">What image formats are supported for bulk geotagging?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">The bulk geotagger supports JPG, JPEG, PNG, WebP, and TIFF image formats, applying consistent GPS coordinates and optional metadata across all files.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Cross-Linking & Next Steps -->
+        <div class="border-t border-outline-variant/30 pt-10">
+            <h2 class="font-display text-2xl font-bold text-primary mb-3">Explore Specialized Photo GPS Tools</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-6">Need single-photo precision editing, camera EXIF analysis, or reverse photo map lookups? Check out our dedicated tools:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="/add-geotag" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">add_location_alt</span>
+                        <h4>Add Geotag to Single Photo</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Inject GPS coordinates with interactive Leaflet map pin placement and custom EXIF tags.</p>
+                </a>
+
+                <a href="/exif-viewer" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">info</span>
+                        <h4>EXIF GPS Viewer</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Inspect embedded camera model, shutter speed, ISO, timestamps, and GPS metadata.</p>
+                </a>
+
+                <a href="/image-location-finder" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">travel_explore</span>
+                        <h4>Photo Location Finder</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Extract coordinates from existing photos and display the exact capture point on satellite maps.</p>
+                </a>
+            </div>
+        </div>
+    </article>
+</main>
+
+<div id="footer-placeholder">
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-12 px-margin-mobile md:px-margin-desktop mt-auto">
+<div class="max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter">
+<div class="col-span-2 lg:col-span-2 flex flex-col gap-4">
+<a href="/" class="font-display text-headline-lg-mobile text-primary hover:opacity-80 transition-opacity flex items-center gap-2.5 group" aria-label="GeoTaggingPhotos Homepage">
+<img src="/geotaggingphotos.png" alt="GeoTaggingPhotos Logo" class="w-8 h-8 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105" />
+<span>GeoTaggingPhotos</span>
+</a>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                    Professional metadata management tools for modern workflows.
+                </p>
+
+<p class="text-xs text-on-surface-variant mt-2">Independent browser tools for photo GPS and metadata workflows.</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-3">
+                    © 2026 GeoTaggingPhotos. All rights reserved.
+                </p>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Tools</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/add-geotag">Add Geotag</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Company</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/about-us">About Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/blog">Blog</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact-us">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/faq">FAQ &amp; Help</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Regional</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-usa">USA Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-uk">UK Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-australia">Australia Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-canada">Canada Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-germany">Germany Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-pakistan">Pakistan Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-india">India Services</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/terms-of-service">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/cookie-policy">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+let bulkFiles = [];
+const bulkDropZone = document.getElementById('bulk-drop-zone');
+const bulkFileInput = document.getElementById('bulk-file-input');
+const bulkQueueBody = document.getElementById('bulk-queue-body');
+const bulkQueueCount = document.getElementById('bulk-queue-count');
+function renderBulkQueue(){if(!bulkQueueBody||!bulkQueueCount)return;bulkQueueCount.textContent=bulkFiles.length?`Batch Queue (${bulkFiles.length} file${bulkFiles.length===1?'':'s'})`:'No files selected';if(!bulkFiles.length){bulkQueueBody.innerHTML='<tr><td colspan="4" class="px-4 py-8 text-center text-sm text-on-surface-variant">Select photos to build a local batch.</td></tr>';return;}bulkQueueBody.innerHTML=bulkFiles.map((file,i)=>`<tr><td class="px-4 py-3">${i+1}</td><td class="px-4 py-3 font-mono text-sm break-all">${file.name.replace(/[&<>"']/g,'')}</td><td class="px-4 py-3 text-sm">${(file.size/1048576).toFixed(2)} MB</td><td class="px-4 py-3 text-sm text-emerald-700">Ready</td></tr>`).join('');}
+function handleBulkFiles(list){const incoming=Array.from(list||[]).filter(f=>/^image\/(jpeg|png|webp|tiff|gif)$/i.test(f.type)||/\.(jpe?g|png|webp|tiff?|gif)$/i.test(f.name));bulkFiles=bulkFiles.concat(incoming).slice(0,500);renderBulkQueue();}
+function clearBulkQueue(){bulkFiles=[];if(bulkFileInput)bulkFileInput.value='';renderBulkQueue();}
+if(bulkDropZone&&bulkFileInput){bulkDropZone.addEventListener('click',e=>{if(e.target.tagName!=='INPUT'&&e.target.tagName!=='BUTTON')bulkFileInput.click();});bulkFileInput.addEventListener('change',e=>handleBulkFiles(e.target.files));['dragenter','dragover'].forEach(n=>bulkDropZone.addEventListener(n,e=>{e.preventDefault();bulkDropZone.classList.add('border-secondary');}));['dragleave','drop'].forEach(n=>bulkDropZone.addEventListener(n,e=>{e.preventDefault();bulkDropZone.classList.remove('border-secondary');}));bulkDropZone.addEventListener('drop',e=>handleBulkFiles(e.dataTransfer.files));}renderBulkQueue();
+function applyBulkCurrentLocation(){const a=document.getElementById('bulk-latitude'),b=document.getElementById('bulk-longitude'),s=document.getElementById('bulk-geo-status'),t=document.getElementById('bulk-geo-status-text');if(!navigator.geolocation){alert('Geolocation is not supported by your browser.');return;}if(s&&t){t.textContent='Fetching current GPS location...';s.classList.remove('hidden');}navigator.geolocation.getCurrentPosition(pos=>{a.value=pos.coords.latitude.toFixed(6);b.value=pos.coords.longitude.toFixed(6);if(t)t.textContent='Current device location applied.';},err=>{if(s)s.classList.add('hidden');alert(!navigator.onLine?'Current location is unavailable offline. Enter coordinates manually.':`Current location is unavailable (${err.message}). Enter coordinates manually.`);},{enableHighAccuracy:true,timeout:10000,maximumAge:0});}
+function toggleBulkAdvancedMetadata(){const panel=document.getElementById('bulk-advanced-metadata-panel'),icon=document.getElementById('bulk-advanced-toggle-icon');if(panel){panel.classList.toggle('hidden');if(icon)icon.style.transform=panel.classList.contains('hidden')?'rotate(0deg)':'rotate(180deg');}}
+function copyBulkCoordinates(){const a=document.getElementById('bulk-latitude').value,b=document.getElementById('bulk-longitude').value;if(!a||!b){alert('Enter latitude and longitude before copying.');return;}if(navigator.clipboard)navigator.clipboard.writeText(`${a}, ${b}`);}
+async function pasteBulkCoordinates(){try{const x=(await navigator.clipboard.readText()).trim().split(/[\s,]+/),a=parseFloat(x[0]),b=parseFloat(x[1]);if(!Number.isFinite(a)||!Number.isFinite(b))throw Error();document.getElementById('bulk-latitude').value=a.toFixed(6);document.getElementById('bulk-longitude').value=b.toFixed(6);}catch(e){alert('Paste a comma-separated latitude and longitude into the fields.');}}
+function clearBulkGps(){document.getElementById('bulk-latitude').value='';document.getElementById('bulk-longitude').value='';}
+function fileDataUrl(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);});}
+function processBulkFile(file,lat,lng,opts){return new Promise(async(resolve,reject)=>{try{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=img.naturalWidth||img.width;c.height=img.naturalHeight||img.height;c.getContext('2d').drawImage(img,0,0);let out=c.toDataURL('image/jpeg',0.95);if(typeof piexif!=='undefined'&&typeof buildGpsExifData==='function')out=piexif.insert(buildGpsExifData(lat,lng,opts),out);resolve(out);};img.onerror=reject;img.src=await fileDataUrl(file);}catch(e){reject(e);}});}
+async function processBulkGeotagging(){if(!bulkFiles.length){alert('Select at least one image first.');return;}if(typeof JSZip==='undefined'||typeof piexif==='undefined'){alert('The local processing libraries are still loading. Refresh and try again.');return;}const lat=parseFloat(document.getElementById('bulk-latitude').value),lng=parseFloat(document.getElementById('bulk-longitude').value);if(!Number.isFinite(lat)||lat<-90||lat>90||!Number.isFinite(lng)||lng<-180||lng>180){alert('Enter valid latitude (-90 to 90) and longitude (-180 to 180) values.');return;}const status=document.getElementById('bulk-geo-status'),statusText=document.getElementById('bulk-geo-status-text'),zip=new JSZip(),opts={title:document.getElementById('bulk-meta-title')?.value||'',keywords:document.getElementById('bulk-meta-keywords')?.value||'',artist:document.getElementById('bulk-meta-author')?.value||'',copyright:document.getElementById('bulk-meta-copyright')?.value||''};if(status)status.classList.remove('hidden');for(let i=0;i<bulkFiles.length;i++){if(statusText)statusText.textContent=`Processing ${i+1} of ${bulkFiles.length}...`;try{const out=await processBulkFile(bulkFiles[i],lat,lng,opts);zip.file(`${bulkFiles[i].name.replace(/\.[^.]+$/,'')}_geotagged.jpg`,out.split(',')[1],{base64:true});}catch(e){console.error('Bulk image processing failed',e);}}const blob=await zip.generateAsync({type:'blob'}),link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='geotagged-photos.zip';document.body.appendChild(link);link.click();link.remove();if(statusText)statusText.textContent='ZIP created. Source photos stayed in this browser.';}
+</script>
+</body>
+</html>

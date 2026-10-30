@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Find Where a Photo Was Taken — Photo Location Finder</title>
+<meta content="Find where a photo was taken for free. Extract embedded EXIF GPS coordinates from your image and view the exact capture location on an interactive map." name="description"/>
+<link rel="canonical" href="https://www.geotaggingphotos.com/image-location-finder"/>
+<link rel="icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="shortcut icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="apple-touch-icon" href="/geotaggingphotos.png" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="google-site-verification" content="vow0IR_605uY_PGLRr5zcCivk_N1dp40r3WmvNFxmL8" />
+<meta name="msvalidate.01" content="207473D434A6B2FA4E2217EFA3CB53DB" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GeoTaggingPhotos.com" />
+<meta property="og:title" content="Find Where a Photo Was Taken — Photo Location Finder" />
+<meta property="og:description" content="Find where a photo was taken for free. Extract embedded EXIF GPS coordinates from your image and view the exact capture location on an interactive map." />
+<meta property="og:url" content="https://www.geotaggingphotos.com/image-location-finder" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Find Where a Photo Was Taken — Photo Location Finder" />
+<meta name="twitter:description" content="Find where a photo was taken for free. Extract embedded EXIF GPS coordinates from your image and view the exact capture location on an interactive map." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); }
+        .gradient-btn { background: linear-gradient(135deg, #2563EB, #1D4ED8); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/components.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<script src="/exif-parser.js"></script>
+<link rel="manifest" href="/manifest.json" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.geotaggingphotos.com/image-location-finder#webapp",
+      "url": "https://www.geotaggingphotos.com/image-location-finder",
+      "name": "Photo Location Finder — Find Where a Photo Was Taken",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All modern browsers (Chrome, Safari, Firefox, Edge)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Find where a photo was taken for free. Extract embedded EXIF GPS coordinates from your image and view the exact capture location on an interactive map.",
+      "browserRequirements": "Requires JavaScript. Supports HTML5 FileReader API, Leaflet Maps, and Exif.js.",
+      "featureList": [
+        "Find where a photo was taken using embedded GPS tags",
+        "Extract latitude, longitude, and altitude headers",
+        "Interactive satellite map capture pinpoint",
+        "Reverse geocode coordinates to street address and city",
+        "100% client-side browser analysis with zero server uploads"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.geotaggingphotos.com/image-location-finder#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.geotaggingphotos.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Location Finder",
+          "item": "https://www.geotaggingphotos.com/image-location-finder"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.geotaggingphotos.com/image-location-finder#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Photo Location Finder find where a photo was taken?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tool parses the hidden EXIF metadata embedded inside your digital photograph. If GPS latitude and longitude coordinates are found, it decodes the spatial data and marks the exact location on an interactive map."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my photo does not show any location on the map?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If no location is detected, the photo either lacked GPS hardware during capture (such as older cameras), location permissions were disabled on your phone, or the image was downloaded from a social platform that removed metadata. You can use our Add Geotag tool to manually inject coordinates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my photos uploaded to an external server during analysis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The EXIF parser inspects your photo completely inside your browser memory using client-side JavaScript. No image files are uploaded or stored on remote servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I find the exact address from photo GPS coordinates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. When GPS coordinates are detected, the tool performs reverse geocoding via OpenStreetMap to display the closest city, state, country, and street address."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<meta name="theme-color" content="#2563EB" />
+<script src="/pwa.js" defer></script>
+</head>
+<body class="font-body-lg text-body-lg text-on-surface bg-background min-h-screen flex flex-col pt-16">
+<div id="header-placeholder"></div>
+
+<!-- Main Content -->
+<main class="flex-grow pt-8 pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+    <div class="flex flex-col md:flex-row gap-gutter">
+        <div class="w-full md:w-1/3 flex flex-col gap-6">
+            <div>
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-2">
+        <span class="material-symbols-outlined text-sm">travel_explore</span>
+        Photo Geolocation Finder
+    </span>
+    <h1 class="font-headline-lg text-2xl md:text-3xl font-bold text-primary mb-2">Find Where a Photo Was Taken</h1>
+    <p class="text-on-surface-variant font-body-md text-sm">Upload any digital image to extract embedded GPS coordinates and discover the exact photo capture location on an interactive satellite map.</p>
+</div>
+            <div class="glass-panel rounded-2xl p-8 border-2 border-dashed border-outline-variant hover:border-secondary transition-colors duration-400 ease-out-expo flex flex-col items-center justify-center text-center cursor-pointer min-h-[250px] relative overflow-hidden group" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                <input accept="image/*" class="hidden" id="file-input" type="file"/>
+                <div class="bg-surface-container rounded-full p-4 mb-4 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-4xl text-secondary">cloud_upload</span>
+                </div>
+                <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Upload Photo</h3>
+                <p class="text-on-surface-variant font-body-md text-body-md mb-4">Drag and drop your image here, or click to browse.</p>
+                <p class="text-outline font-label-md text-label-md text-xs uppercase tracking-wider">Supports JPG, PNG, WEBP, HEIC</p>
+            </div>
+            <div class="glass-panel rounded-xl p-6 flex flex-col gap-4">
+                <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary">info</span> EXIF Data
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col">
+                        <label class="text-on-surface-variant font-label-md text-xs uppercase mb-1">Latitude</label>
+                        <div id="finder-lat" class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-3 py-2 font-mono-data text-primary text-sm font-bold">Select a photo</div>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-on-surface-variant font-label-md text-xs uppercase mb-1">Longitude</label>
+                        <div id="finder-lng" class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-3 py-2 font-mono-data text-primary text-sm font-bold">Select a photo</div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-on-surface-variant font-label-md text-xs uppercase mb-1">Detected Location / Place</label>
+                    <div id="finder-place-name" class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-3 py-2 font-body-md text-primary text-xs font-semibold">Select a photo</div>
+                </div>
+                <div id="finder-status" class="text-xs text-on-surface-variant italic hidden"></div>
+            </div>
+        </div>
+        <div class="w-full md:w-2/3 flex flex-col min-h-[500px] relative">
+            <div class="glass-panel rounded-2xl overflow-hidden shadow-glass flex-grow relative bg-surface-container-lowest border border-outline-variant/20">
+                <div id="finder-map" class="w-full h-full min-h-[500px]"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive SEO Content Section (500+ Words) -->
+    <article class="mt-16 border-t border-outline-variant/30 pt-16 space-y-16 w-full">
+        <!-- Section 1: Explanation -->
+        <div class="space-y-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full">
+                <span class="material-symbols-outlined text-sm">search_activity</span>
+                Location Discovery Guide
+            </span>
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Discover Where a Photo Was Taken Using EXIF GPS Data</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                Modern digital cameras, smartphones, and aerial drones automatically record spatial metadata when saving images. GeoTaggingPhotos' <strong>Image Location Finder</strong> instantly decodes hidden GPS coordinates embedded inside photo headers and plots the exact capture point on interactive maps:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">1</div>
+                    <h3 class="font-bold text-primary text-base">Upload Photo</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Select or drag your image into the location analyzer. Supports JPG, JPEG, PNG, WebP, and TIFF file formats up to 50MB.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">2</div>
+                    <h3 class="font-bold text-primary text-base">Extract EXIF Metadata</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Our client-side parser reads embedded EXIF headers to uncover raw latitude, longitude, and altitude values instantly.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">3</div>
+                    <h3 class="font-bold text-primary text-base">Pinpoint on Map</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">View the exact coordinate marker on an interactive satellite map alongside nearest street address, city, and country details.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Common Use Cases -->
+        <div class="space-y-6">
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Practical Applications of Photo Location Extraction</h2>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+                Extracting geographic metadata serves diverse professional and personal goals:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">fact_check</span>
+                        Journalism &amp; OSINT Investigation
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Journalists and researchers review embedded GPS coordinates as authentic digital evidence to verify image origins and event locations.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">explore</span>
+                        Travel Photography &amp; Memory Archiving
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Rediscover exact scenic spots, hiking trail viewpoints, and remote landmarks captured during past vacations and travel expeditions.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">apartment</span>
+                        Real Estate &amp; Insurance Audits
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Verify structural assessment photos, property inspection galleries, and claim documentation with verified capture locations.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary">shield</span>
+                        Privacy &amp; Location Security Audits
+                    </h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Scan smartphone photos before publishing on public forums to check whether hidden residential GPS tags are exposed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Privacy Guarantee -->
+        <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 text-center space-y-4">
+            <h2 class="font-display text-2xl font-bold text-primary">Direct Browser-Based Location Analysis</h2>
+            <p class="text-on-surface-variant max-w-2xl mx-auto text-base leading-relaxed">
+                GeoTaggingPhotos reads your selected image file directly inside your browser memory without transmitting it to external photo-processing servers. Your files remain completely secure on your local device.
+            </p>
+        </div>
+
+        <!-- Section 4: Frequently Asked Questions (AEO Optimized) -->
+        <div class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-2">
+                    <span class="material-symbols-outlined text-sm">help</span>
+                    FAQ
+                </span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Frequently Asked Questions</h2>
+                <p class="text-on-surface-variant text-sm mt-1">Common questions about finding where a photo was taken and extracting location metadata.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">How does the Photo Location Finder find where a photo was taken?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">The tool parses the hidden EXIF metadata embedded inside your digital photograph. If GPS latitude and longitude coordinates are found, it decodes the spatial data and marks the exact location on an interactive map.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">What if my photo does not show any location on the map?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">If no location is detected, the photo either lacked GPS hardware during capture (such as older cameras), location permissions were disabled on your phone, or the image was downloaded from a social platform that removed metadata. You can use our Add Geotag tool to manually inject coordinates.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">Are my photos uploaded to an external server during analysis?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">No. The EXIF parser inspects your photo completely inside your browser memory using client-side JavaScript. No image files are uploaded or stored on remote servers.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+                    <h3 class="font-bold text-primary text-base">Can I find the exact address from photo GPS coordinates?</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Yes. When GPS coordinates are detected, the tool performs reverse geocoding via OpenStreetMap to display the closest city, state, country, and street address.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Cross-Linking & Next Steps -->
+        <div class="border-t border-outline-variant/30 pt-10">
+            <h2 class="font-display text-2xl font-bold text-primary mb-3">Explore Related Photo GPS &amp; Metadata Tools</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-6">Need to add missing coordinates, batch tag multiple photos, or inspect detailed camera parameters? Try our specialized tools:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="/add-geotag" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">add_location_alt</span>
+                        <h4>Add GPS Coordinates</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Inject precise latitude, longitude, and custom EXIF tags into photos with interactive map pin placement.</p>
+                </a>
+
+                <a href="/bulk-geotagging" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">collections</span>
+                        <h4>Bulk Photo Geotagging</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Apply global GPS coordinates across hundreds of photos simultaneously and download as an organized ZIP archive.</p>
+                </a>
+
+                <a href="/exif-viewer" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-primary mb-1">
+                        <span class="material-symbols-outlined text-secondary text-lg">info</span>
+                        <h4>EXIF Metadata Viewer</h4>
+                    </div>
+                    <p class="text-xs text-on-surface-variant">Inspect complete camera model, shutter speed, aperture, ISO, and capture timestamp details.</p>
+                </a>
+            </div>
+        </div>
+    </article>
+</main>
+
+<div id="footer-placeholder">
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-12 px-margin-mobile md:px-margin-desktop mt-auto">
+<div class="max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter">
+<div class="col-span-2 lg:col-span-2 flex flex-col gap-4">
+<a href="/" class="font-display text-headline-lg-mobile text-primary hover:opacity-80 transition-opacity flex items-center gap-2.5 group" aria-label="GeoTaggingPhotos Homepage">
+<img src="/geotaggingphotos.png" alt="GeoTaggingPhotos Logo" class="w-8 h-8 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105" />
+<span>GeoTaggingPhotos</span>
+</a>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                    Professional metadata management tools for modern workflows.
+                </p>
+
+<p class="text-xs text-on-surface-variant mt-2">Independent browser tools for photo GPS and metadata workflows.</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-3">
+                    © 2026 GeoTaggingPhotos. All rights reserved.
+                </p>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Tools</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/add-geotag">Add Geotag</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Company</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/about-us">About Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/blog">Blog</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact-us">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/faq">FAQ &amp; Help</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Regional</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-usa">USA Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-uk">UK Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-australia">Australia Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-canada">Canada Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-germany">Germany Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-pakistan">Pakistan Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-india">India Services</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-bold">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/terms-of-service">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/cookie-policy">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    let finderMap = null;
+    let finderMarker = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initFinderMap();
+        initFinderTool();
+    });
+
+    function initFinderMap() {
+        finderMap = L.map('finder-map').setView([20.0, 0.0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(finderMap);
+
+        setTimeout(() => {
+            if (finderMap) finderMap.invalidateSize();
+        }, 300);
+    }
+
+    function initFinderTool() {
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        if (dropZone && fileInput) {
+            dropZone.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+                    fileInput.click();
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (fileInput.files && fileInput.files[0]) {
+                    handleLocationFile(fileInput.files[0]);
+                }
+            });
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, false);
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                let files = e.dataTransfer.files;
+                if (files && files[0]) {
+                    handleLocationFile(files[0]);
+                }
+            }, false);
+        }
+    }
+
+    async function reverseGeocodeLocation(lat, lng) {
+        const placeEl = document.getElementById('finder-place-name');
+        if (placeEl) placeEl.innerText = "⏳ Looking up place name...";
+        try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`);
+            if (!res.ok) throw new Error("Reverse geocoding failed");
+            const data = await res.json();
+            if (data && data.display_name) {
+                const placeName = data.display_name;
+                if (placeEl) placeEl.innerText = placeName;
+                return placeName;
+            }
+        } catch (err) {
+            console.warn("Reverse geocode error:", err);
+        }
+        const fallback = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+        if (placeEl) placeEl.innerText = fallback;
+        return fallback;
+    }
+
+    function handleLocationFile(file) {
+        const imageUrl = URL.createObjectURL(file);
+        const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        const dropZone = document.getElementById('drop-zone');
+
+        dropZone.innerHTML = `
+            <div class="relative w-full h-full flex flex-col items-center justify-center p-2">
+                <img src="${imageUrl}" alt="${file.name}" class="max-h-[160px] w-auto object-contain rounded-xl shadow-md mb-2" />
+                <span class="font-bold text-sm text-primary truncate max-w-full">${file.name}</span>
+                <span class="text-xs font-mono-data text-on-surface-variant">${fileSizeMB} MB</span>
+                <button type="button" onclick="location.reload()" class="mt-2 text-xs text-secondary hover:underline font-semibold flex items-center gap-1">
+                    <span class="material-symbols-outlined text-xs">refresh</span> Change Image
+                </button>
+            </div>
+        `;
+
+        parsePhotoExifData(file, async (data, err) => {
+            const statusBox = document.getElementById('finder-status');
+
+            if (err || !data || !data.hasGps) {
+                document.getElementById('finder-lat').innerText = 'Not Found';
+                document.getElementById('finder-lng').innerText = 'Not Found';
+                if (document.getElementById('finder-place-name')) document.getElementById('finder-place-name').innerText = 'No GPS Metadata';
+                if (statusBox) {
+                    statusBox.innerText = '⚠️ No GPS location metadata found in this photo. Use our Add Geotag tool to set a location.';
+                    statusBox.classList.remove('hidden');
+                }
+                return;
+            }
+
+            document.getElementById('finder-lat').innerText = data.latFormatted;
+            document.getElementById('finder-lng').innerText = data.lngFormatted;
+
+            if (statusBox) {
+                statusBox.innerText = '✓ Embedded GPS coordinates detected!';
+                statusBox.classList.remove('hidden');
+            }
+
+            if (finderMap) {
+                if (finderMarker) finderMap.removeLayer(finderMarker);
+                const blueIcon = L.icon({
+                    iconUrl: '/map-icon.svg',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
+                finderMarker = L.marker([data.latitude, data.longitude], { icon: blueIcon }).addTo(finderMap);
+                finderMap.setView([data.latitude, data.longitude], 14);
+                
+                setTimeout(() => {
+                    finderMap.invalidateSize();
+                }, 200);
+
+                finderMarker.bindPopup(`<b>Photo Capture Location</b><br>Lat: ${data.latitude.toFixed(6)}<br>Lng: ${data.longitude.toFixed(6)}<br>⏳ Fetching place name...`).openPopup();
+
+                const placeName = await reverseGeocodeLocation(data.latitude, data.longitude);
+                finderMarker.setPopupContent(`<b>Photo Capture Location</b><br>📍 <b>${placeName}</b><br>Lat: ${data.latitude.toFixed(6)}<br>Lng: ${data.longitude.toFixed(6)}`).openPopup();
+            }
+        });
+    }
+</script>
+</body>
+</html>

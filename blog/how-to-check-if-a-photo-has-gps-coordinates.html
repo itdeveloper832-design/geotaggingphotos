@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Check If a Photo Has GPS Coordinates Online | GeoTaggingPhotos</title>
+<meta name="description" content="Learn how to check whether a photo contains GPS coordinates, read EXIF location fields, view a photo on a map, and add coordinates when they are missing." />
+<link rel="canonical" href="https://www.geotaggingphotos.com/blog/how-to-check-if-a-photo-has-gps-coordinates" />
+<link rel="icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="apple-touch-icon" href="/geotaggingphotos.png" />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="GeoTaggingPhotos.com" />
+<meta property="og:title" content="How to Check If a Photo Has GPS Coordinates Online" />
+<meta property="og:description" content="A practical guide to checking EXIF GPS metadata, mapping an existing photo location, and adding coordinates when they are missing." />
+<meta property="og:url" content="https://www.geotaggingphotos.com/blog/how-to-check-if-a-photo-has-gps-coordinates" />
+<meta property="og:image" content="https://www.geotaggingphotos.com/geotaggingphotos.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<script src="/components.js"></script>
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#2563EB" />
+<script src="/pwa.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Article",
+      "headline":"How to Check If a Photo Has GPS Coordinates Online",
+      "description":"A practical guide to reading EXIF GPS metadata, mapping an existing photo location, and adding coordinates when they are missing.",
+      "inLanguage":"en-US",
+      "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.geotaggingphotos.com/blog/how-to-check-if-a-photo-has-gps-coordinates"},
+      "datePublished":"2026-08-21T09:00:00+00:00",
+      "dateModified":"2026-08-29T12:00:00+00:00",
+      "author":{"@type":"Organization","name":"GeoTaggingPhotos Editorial Team","url":"https://www.geotaggingphotos.com/about-us"},
+      "publisher":{"@type":"Organization","name":"GeoTaggingPhotos","url":"https://www.geotaggingphotos.com","logo":{"@type":"ImageObject","url":"https://www.geotaggingphotos.com/geotaggingphotos.png"}}
+    },
+    {"@type":"HowTo","name":"Check if a photo contains GPS coordinates","step":[{"@type":"HowToStep","name":"Open the EXIF Viewer","text":"Open the GeoTaggingPhotos EXIF Viewer in a modern browser."},{"@type":"HowToStep","name":"Select the original image","text":"Choose the original photo file rather than a screenshot or a copy exported by a service that may strip metadata."},{"@type":"HowToStep","name":"Read the GPS fields","text":"Review the latitude, longitude, altitude, and detected location fields shown by the viewer."},{"@type":"HowToStep","name":"Map or repair the result","text":"Use the Image Location Finder to map detected coordinates, or use Add GPS to Photos when the file has no location data."}]},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.geotaggingphotos.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.geotaggingphotos.com/blog"},{"@type":"ListItem","position":3,"name":"Check Photo GPS","item":"https://www.geotaggingphotos.com/blog/how-to-check-if-a-photo-has-gps-coordinates"}]}
+  ]
+}
+</script>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased min-h-screen flex flex-col pt-16">
+<div id="header-placeholder"></div>
+<main class="flex-grow pt-10 pb-20 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto w-full">
+<article class="space-y-12">
+<header class="space-y-5 text-center max-w-3xl mx-auto">
+<nav aria-label="Breadcrumb" class="text-sm text-on-surface-variant"><a href="/" class="hover:text-secondary">Home</a><span aria-hidden="true" class="mx-2">/</span><a href="/blog" class="hover:text-secondary">Blog</a><span aria-hidden="true" class="mx-2">/</span><span>Check Photo GPS</span></nav>
+<span class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full">Photo metadata guide</span>
+<h1 class="font-display text-4xl md:text-5xl font-bold text-primary leading-tight">How to Check If a Photo Has GPS Coordinates Online</h1>
+<p class="text-on-surface-variant text-base md:text-lg leading-relaxed">Find out whether an image is geotagged, inspect the EXIF location fields, and decide what to do when the GPS data is missing.</p>
+<p class="text-xs text-on-surface-variant">Updated August 2026 · 5 minute read</p>
+</header>
+<section class="glass-panel p-8 md:p-10 rounded-3xl border border-outline-variant/30 space-y-5 text-on-surface-variant leading-relaxed">
+<p>A photo can look ordinary while carrying location information inside its EXIF metadata. Cameras and phones may record latitude, longitude, altitude, and a GPS timestamp at capture time. Editing, exporting, screenshots, and some sharing services can remove those fields. Checking the file before you publish or edit it helps you understand what is actually present.</p>
+<p>The quickest browser workflow is to use the <a href="/exif-viewer" class="text-secondary font-semibold hover:underline">online EXIF and GPS Viewer</a>. The viewer reads the selected image locally in the browser and displays the fields it can decode. If coordinates are available, the <a href="/image-location-finder" class="text-secondary font-semibold hover:underline">Photo Location Finder</a> can show the point on a map.</p>
+</section>
+<section class="space-y-5">
+<h2 class="font-display text-3xl font-bold text-primary">How to check a photo for GPS metadata</h2>
+<div class="grid gap-4">
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30"><h3 class="font-bold text-primary text-lg mb-2">1. Open the EXIF Viewer</h3><p class="text-on-surface-variant leading-relaxed">Open the viewer in a modern browser. You do not need to install desktop software or create an account for the browser workflow.</p></div>
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30"><h3 class="font-bold text-primary text-lg mb-2">2. Select the original image</h3><p class="text-on-surface-variant leading-relaxed">Choose the original JPG, JPEG, PNG, WebP, or TIFF file when possible. A screenshot is a new image and normally does not carry the original photo's EXIF headers.</p></div>
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30"><h3 class="font-bold text-primary text-lg mb-2">3. Read the GPS fields</h3><p class="text-on-surface-variant leading-relaxed">Look for latitude and longitude first. Altitude, GPS time, and a detected place name may also be available. A value such as latitude 40.7128 and longitude -74.0060 is a coordinate pair; it is not the same thing as a typed address stored in a file.</p></div>
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30"><h3 class="font-bold text-primary text-lg mb-2">4. Map or repair the result</h3><p class="text-on-surface-variant leading-relaxed">If coordinates are present, open the <a href="/image-location-finder" class="text-secondary font-semibold hover:underline">Image Location Finder</a> to inspect the map result. If they are absent or incorrect, use <a href="/add-geotag" class="text-secondary font-semibold hover:underline">Add GPS to Photos</a> to enter known coordinates or replace the existing GPS fields.</p></div>
+</div>
+</section>
+<section class="space-y-5">
+<h2 class="font-display text-3xl font-bold text-primary">What does it mean when no GPS is found?</h2>
+<p class="text-on-surface-variant leading-relaxed">A missing GPS result does not prove that the photo was never taken at a known place. Location services may have been disabled, the camera may not have had permission, or an export process may have removed metadata. A copied image, screenshot, social-media download, or format conversion may also contain fewer fields than the original.</p>
+<p class="text-on-surface-variant leading-relaxed">When you know the correct place, you can add coordinates with the browser tool. When you do not know the place, an EXIF viewer cannot reconstruct it from an empty GPS field. Image-recognition geolocation is a different type of service and should not be confused with reading embedded metadata.</p>
+</section>
+<section class="space-y-5">
+<h2 class="font-display text-3xl font-bold text-primary">How to interpret the result on another device</h2>
+<p class="text-on-surface-variant leading-relaxed">Desktop photo applications often expose location in a Details, Info, or Inspector panel, but those panels may show the library's own location record rather than the current file's embedded EXIF. If you are checking a file for publishing, inspect the exact copy that you intend to share. A location shown in a photo app is useful context, but it is not proof that the same coordinates are still present in the exported file.</p>
+<p class="text-on-surface-variant leading-relaxed">GPS coordinates are normally represented as latitude and longitude. Latitude ranges from south to north, while longitude ranges from west to east. A coordinate pair can be copied into a mapping service, but a reverse-geocoded street or place name is an interpretation provided by a map service and may require network access.</p>
+<p class="text-on-surface-variant leading-relaxed">For a simple verification loop, check the original file in the EXIF Viewer, compare the displayed fields with the place you expect, and then open the Location Finder only if you want a map view. If the values are wrong, do not overwrite the original; create a clearly named edited copy with the Add Geotag tool.</p>
+</section>
+<section class="glass-panel p-8 rounded-3xl border border-outline-variant/30 space-y-5">
+<h2 class="font-display text-3xl font-bold text-primary">Privacy before sharing a geotagged photo</h2>
+<p class="text-on-surface-variant leading-relaxed">GPS metadata can reveal a home, workplace, travel route, or other sensitive place. Review the coordinates before posting an original file publicly. The GeoTaggingPhotos image-processing tools are designed to handle selected files in the browser; map tiles and place lookups are separate network features that may be used when you ask to view a location.</p>
+<p class="text-on-surface-variant leading-relaxed">If you want to publish a copy without location fields, use the tool's metadata-removal action where supported, or export a verified copy and check it again with the EXIF Viewer.</p>
+</section>
+<section class="border-t border-outline-variant/30 pt-10 space-y-4">
+<h2 class="font-display text-2xl font-bold text-primary">Continue with the right tool</h2>
+<div class="grid md:grid-cols-3 gap-4"><a href="/exif-viewer" class="rounded-xl border border-outline-variant/30 p-5 hover:border-secondary"><h3 class="font-bold text-primary mb-1">Check EXIF GPS</h3><p class="text-sm text-on-surface-variant">Read coordinates and camera metadata.</p></a><a href="/image-location-finder" class="rounded-xl border border-outline-variant/30 p-5 hover:border-secondary"><h3 class="font-bold text-primary mb-1">Find photo location</h3><p class="text-sm text-on-surface-variant">Map coordinates already embedded in a file.</p></a><a href="/add-geotag" class="rounded-xl border border-outline-variant/30 p-5 hover:border-secondary"><h3 class="font-bold text-primary mb-1">Add or replace GPS</h3><p class="text-sm text-on-surface-variant">Repair missing or incorrect coordinates.</p></a></div>
+</section>
+</article>
+</main>
+<div id="footer-placeholder"></div>
+</body>
+</html>
