@@ -248,4 +248,4 @@ When creating a new tool, regional hub, or blog post:
 - **Map Data**: © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors
 - **Geocoding**: OpenStreetMap Nominatim Service
 - **EXIF Core**: [piexifjs](https://github.com/hMatoba/piexifjs) & [exif-js](https://github.com/exif-js/exif-js)
-- **Repository**: [github.com/newaladdress-ship-it/geotageditor](https://github.com/newaladdress-ship-it/geotageditor)
+- **Repository**: [github.com/itdeveloper832-design/geotaggingphotos](https://github.com/itdeveloper832-design/geotaggingphotos)
