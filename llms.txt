@@ -41,6 +41,8 @@ The site's core subject areas are photo geotagging, GPS coordinates in photos, l
   * [Geotag Photos on iPhone & Android](https://www.geotaggingphotos.com/blog/how-to-geotag-photos-on-iphone-and-android): Mobile guide for iOS Camera, Apple Photos, Android permissions, Google Photos, and browser tools.
   * [Photo Geotagging for Local SEO & Google Maps](https://www.geotaggingphotos.com/blog/photo-geotagging-for-local-seo-and-google-maps): Strategic guide for Google Business Profiles, local search signals, and real estate marketing.
   * [How to Bulk Geotag Photos Online](https://www.geotaggingphotos.com/blog/how-to-bulk-geotag-photos-online): Guide to batch processing up to 500 images simultaneously with instant ZIP export.
+  * [What Is Geo Tagging?](https://www.geotaggingphotos.com/blog/what-is-geo-tagging): Beginner guide to photo GPS, EXIF location data, privacy, and adding or checking a geotag.
+  * [Free Geotag Photo Editor Online](https://www.geotaggingphotos.com/blog/free-geotag-photo-editor-online): Guide to editing GPS coordinates and EXIF metadata in the browser, batch edits, and verifying results.
 
 ## Photo Geotagging
 

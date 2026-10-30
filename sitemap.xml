@@ -156,4 +156,14 @@
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>https://www.geotaggingphotos.com/blog/what-is-geo-tagging</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.geotaggingphotos.com/blog/free-geotag-photo-editor-online</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
 </urlset>
