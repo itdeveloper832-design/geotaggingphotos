@@ -1,0 +1,4 @@
+# ads.txt for www.geotaggingphotos.com
+# No authorized digital sellers yet. After AdSense account approval, add the
+# Google publisher line below it, replacing pub-XXXXXXXXXXXXXXXX with the real
+# publisher ID from the AdSense account (format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa).

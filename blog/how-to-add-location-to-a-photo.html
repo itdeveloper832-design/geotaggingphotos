@@ -192,7 +192,7 @@
     .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
     .prose li { margin-bottom: 0.5rem; line-height: 1.6; color: #334155; }
 </style>
-<script src="/components.js"></script>
+<script src="/components.js" defer></script>
 <link rel="manifest" href="/manifest.json" />
 <meta name="theme-color" content="#2563EB" />
 <script src="/pwa.js" defer></script>
@@ -332,7 +332,7 @@
             <div class="flex items-start gap-4">
                 <span class="material-symbols-outlined text-secondary text-3xl shrink-0 mt-1">pin_drop</span>
                 <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-primary">In This Practical Guide</h3>
+                    <h2 class="text-lg font-bold text-primary">In This Practical Guide</h2>
                     <p class="text-sm text-on-surface-variant leading-relaxed">
                         Adding a location to a photo helps preserve where an image was captured, organize a large photo library, and maintain geographic precision in image metadata. Whether you want to add GPS coordinates to a single picture, update an existing location, or apply coordinates to an entire batch, this comprehensive guide explains every method with zero quality loss.
                     </p>
@@ -462,7 +462,7 @@
                 <div class="flex gap-4 items-start glass-panel p-6 rounded-2xl border border-outline-variant/30">
                     <span class="w-8 h-8 rounded-full bg-secondary text-white font-bold flex items-center justify-center shrink-0 text-sm">1</span>
                     <div class="space-y-1">
-                        <h4 class="font-bold text-primary text-base">Step 1: Upload Your Photo</h4>
+                        <h3 class="font-bold text-primary text-base">Step 1: Upload Your Photo</h3>
                         <p class="text-sm text-on-surface-variant">
                             Click or drag-and-drop your image into the uploader. Supported formats include <strong>JPEG, JPG, PNG, and WebP</strong> up to 50MB.
                         </p>
@@ -539,10 +539,10 @@
             </ul>
 
             <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 my-6 not-prose">
-                <h4 class="font-bold text-primary mb-2 flex items-center gap-2">
+                <h3 class="font-bold text-primary mb-2 flex items-center gap-2">
                     <span class="material-symbols-outlined text-secondary">swap_horiz</span>
                     Decimal Degrees (DD) vs Degrees Minutes Seconds (DMS)
-                </h4>
+                </h3>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
                     Most online geotagging tools use standard <strong>Decimal Degrees (DD)</strong> (e.g., <code>Latitude: 40.7128, Longitude: -74.0060</code>). If your camera gave you <strong>DMS</strong> (e.g., <code>40° 42' 46.08" N, 74° 0' 21.60" W</code>), modern tools automatically convert the DMS format into standard IEEE floating-point EXIF tags.
                 </p>
@@ -663,7 +663,7 @@
                 <div class="flex items-start gap-3">
                     <span class="material-symbols-outlined text-amber-600 text-2xl shrink-0 mt-0.5">security</span>
                     <div class="space-y-1">
-                        <h4 class="font-bold text-primary text-base">Privacy &amp; Home Security Notice</h4>
+                        <h3 class="font-bold text-primary text-base">Privacy &amp; Home Security Notice</h3>
                         <p class="text-xs text-on-surface-variant leading-relaxed">
                             Photos taken at your home, children's schools, or private properties contain precise GPS coordinates down to a few meters. Before sharing personal photos on public forums, classified listings, or unencrypted channels, consider whether stripping GPS metadata is safer.
                         </p>
@@ -803,21 +803,21 @@
                 </p>
             </div>
             <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-                <h4 class="font-label-md text-label-md text-primary font-bold">Tools</h4>
+                <h3 class="font-label-md text-label-md text-primary font-bold">Tools</h3>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/add-geotag">Add Geotag</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
             </div>
             <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-                <h4 class="font-label-md text-label-md text-primary font-bold">Company</h4>
+                <h3 class="font-label-md text-label-md text-primary font-bold">Company</h3>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/about-us">About Us</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/blog">Blog</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact-us">Contact Us</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/faq">FAQ &amp; Help</a>
             </div>
             <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-                <h4 class="font-label-md text-label-md text-primary font-bold">Regional</h4>
+                <h3 class="font-label-md text-label-md text-primary font-bold">Regional</h3>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-pakistan">Pakistan Services</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-germany">Germany Services</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-australia">Australia Services</a>
@@ -827,7 +827,7 @@
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-india">India Services</a>
             </div>
             <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-                <h4 class="font-label-md text-label-md text-primary font-bold">Legal</h4>
+                <h3 class="font-label-md text-label-md text-primary font-bold">Legal</h3>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/privacy-policy">Privacy Policy</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/terms-of-service">Terms of Service</a>
                 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/cookie-policy">Cookie Policy</a>

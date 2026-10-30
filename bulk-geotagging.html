@@ -45,7 +45,7 @@
             transform: scale(1.02);
         }
 </style>
-<script src="/components.js"></script>
+<script src="/components.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/piexifjs@1.0.6/piexif.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="/geotag-exif.js"></script>
@@ -243,7 +243,7 @@
 <div class="lg:col-span-8 flex flex-col gap-gutter">
 <div class="glass-panel rounded-xl p-12 border-2 border-dashed border-outline-variant hover:border-secondary transition-colors duration-400 ease-out-expo flex flex-col items-center justify-center text-center cursor-pointer min-h-[250px]" id="bulk-drop-zone">
 <span class="material-symbols-outlined text-[48px] text-secondary mb-4 opacity-80">cloud_upload</span>
-<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2 text-primary">Drag &amp; Drop Photos Here</h3>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-2 text-primary">Drag &amp; Drop Photos Here</h2>
 <p class="text-on-surface-variant mb-6">Supports JPG, PNG, WebP (TIFF and HEIC in Safari). Max 500 files per batch.</p>
 <p class="text-sm text-on-surface-variant mt-2">Note: uploads are converted to JPEG quality 0.95; transparency is not preserved.</p>
 <button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-lg font-label-md hover:bg-surface-container-highest transition-colors">Browse Files</button>
@@ -500,7 +500,7 @@
                 <a href="/add-geotag" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
                     <div class="flex items-center gap-2 font-bold text-primary mb-1">
                         <span class="material-symbols-outlined text-secondary text-lg">add_location_alt</span>
-                        <h4>Add Geotag to Single Photo</h4>
+                        <h3>Add Geotag to Single Photo</h3>
                     </div>
                     <p class="text-xs text-on-surface-variant">Inject GPS coordinates with interactive Leaflet map pin placement and custom EXIF tags.</p>
                 </a>
@@ -543,21 +543,21 @@
                 </p>
 </div>
 <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-<h4 class="font-label-md text-label-md text-primary font-bold">Tools</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold">Tools</h3>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/add-geotag">Add Geotag</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
 </div>
 <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-<h4 class="font-label-md text-label-md text-primary font-bold">Company</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold">Company</h3>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/about-us">About Us</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/blog">Blog</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact-us">Contact Us</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/faq">FAQ &amp; Help</a>
 </div>
 <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-<h4 class="font-label-md text-label-md text-primary font-bold">Regional</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold">Regional</h3>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-usa">USA Services</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-uk">UK Services</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-australia">Australia Services</a>
@@ -567,7 +567,7 @@
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-india">India Services</a>
 </div>
 <div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
-<h4 class="font-label-md text-label-md text-primary font-bold">Legal</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold">Legal</h3>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/privacy-policy">Privacy Policy</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/terms-of-service">Terms of Service</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/cookie-policy">Cookie Policy</a>
