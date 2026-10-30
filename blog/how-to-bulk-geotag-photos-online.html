@@ -116,7 +116,7 @@
           "name": "Does bulk geotagging compress or resize my images?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. The EXIF parser directly modifies the binary header markers, leaving the underlying visual image stream uncompressed."
+            "text": "Bulk mode redraws each image and saves it as a high-quality JPEG (quality 0.95) before writing the GPS data, so there is a minimal, visually negligible re-compression. Your original files on your device are never overwritten."
           }
         }
       ]
@@ -284,7 +284,7 @@
                 <span>•</span>
                 <span class="flex items-center gap-1">
                     <span class="material-symbols-outlined text-sm text-secondary">schedule</span>
-                    6 min read
+                    4 min read
                 </span>
             </div>
         </header>
@@ -423,7 +423,7 @@
                             <td class="py-3 px-4 font-semibold text-primary">Cost</td>
                             <td class="py-3 px-4 text-emerald-600 font-bold">100% Free</td>
                             <td class="py-3 px-4">Free (Open Source)</td>
-                            <td class="py-3 px-4 text-rose-600">$10 - $50 / month</td>
+                            <td class="py-3 px-4 text-rose-600">Paid plans vary</td>
                         </tr>
                     </tbody>
                 </table>
@@ -431,6 +431,33 @@
         </section>
 
         <!-- Final CTA -->
+        <section class="space-y-4">
+<h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Troubleshooting: When a File Won't Join the Queue</h2>
+<p class="text-on-surface-variant leading-relaxed">If a photo does not appear in the queue after you select it, check the format first. The tool accepts JPG, PNG, TIFF, WebP, and GIF files, and anything else is filtered out. Batches are capped at 500 files per session, so files beyond that limit are dropped. Very large batches can also take a moment to register, so give the page a few seconds before you re-select. If the queue still looks empty, re-select the files; the Process button itself re-reads the selected files before it starts, so a missed update does not block you.</p>
+</section>
+
+        <section class="space-y-4">
+<h2 class="font-display text-2xl md:text-3xl font-bold text-primary">What Happens to Image Quality in Bulk Mode</h2>
+<p class="text-on-surface-variant leading-relaxed">Bulk mode works differently from single-photo EXIF editing. Each image is redrawn and saved as a JPEG at quality 0.95, and then the GPS coordinates are written into the new file. The quality change is visually negligible at that setting, but it is technically a re-encode, not a metadata-only edit. That is why the tool never touches your originals: the files on your device stay exactly as they were, and only the downloaded ZIP contains the processed copies. If pixel-perfect originals matter to you, keep them, and treat the ZIP as the sharing set.</p>
+<p class="text-on-surface-variant leading-relaxed">Processed files are renamed with a _geotagged suffix and bundled into a single ZIP archive called geotagged-photos.zip, so a 500-file batch comes back as one download instead of 500 separate files.</p>
+</section>
+
+        <section class="space-y-6">
+<h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Frequently Asked Questions</h2>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">How many photos can I bulk geotag at the same time?</h3>
+<p class="text-on-surface-variant leading-relaxed">GeoTaggingPhotos supports batch processing up to 500 images per session directly in your browser.</p>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">Are my images uploaded to external servers during bulk geotagging?</h3>
+<p class="text-on-surface-variant leading-relaxed">No. All batch EXIF metadata modification happens locally on your computer/device using JavaScript Web APIs, ensuring 100% privacy.</p>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">Does bulk geotagging compress or resize my images?</h3>
+<p class="text-on-surface-variant leading-relaxed">Bulk mode redraws each image and saves it as a high-quality JPEG (quality 0.95) before writing the GPS data, so there is a minimal, visually negligible re-compression. Your original files on your device are never overwritten.</p>
+</div>
+</section>
+
         <section class="glass-panel p-10 md:p-14 rounded-3xl border border-outline-variant/30 text-center space-y-6 bg-gradient-to-br from-surface to-surface-container-low">
             <h2 class="font-display text-3xl md:text-4xl font-bold text-primary">Ready to Bulk Geotag Your Photos?</h2>
             <p class="font-body-lg text-on-surface-variant text-base md:text-lg max-w-2xl mx-auto leading-relaxed">

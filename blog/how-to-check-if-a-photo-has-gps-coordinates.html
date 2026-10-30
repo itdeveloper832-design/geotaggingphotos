@@ -49,6 +49,46 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can I tell if a photo has GPS coordinates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the photo in the free EXIF viewer. It reads the GPS fields and shows the coordinates and the capture location on a map, or it tells you plainly that no GPS metadata was found."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a missing GPS result mean the photo has no location?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It only means no GPS data is stored in the file. The photo may still show a recognizable place, and some apps and exports strip metadata: screenshots, for example, do not carry the original photo&apos;s EXIF data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I check GPS coordinates on my phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The EXIF viewer is a web page, so it works in your phone&apos;s browser with no app install. Upload the photo and read the result the same way you would on a computer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do before sharing a photo publicly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check it first. If it carries a location you do not want to share, such as your home or a school, share a copy without that metadata instead, and verify the copy in the viewer again before you post it."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-background text-on-background font-body-lg antialiased min-h-screen flex flex-col pt-16">
 <div id="header-placeholder">
@@ -147,7 +187,7 @@
 <span class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full">Photo metadata guide</span>
 <h1 class="font-display text-4xl md:text-5xl font-bold text-primary leading-tight">How to Check If a Photo Has GPS Coordinates Online</h1>
 <p class="text-on-surface-variant text-base md:text-lg leading-relaxed">Find out whether an image is geotagged, inspect the EXIF location fields, and decide what to do when the GPS data is missing.</p>
-<p class="text-xs text-on-surface-variant">Updated August 2026 · 5 minute read</p>
+<p class="text-xs text-on-surface-variant">Updated August 2026 · 5 min read</p>
 </header>
 <section class="glass-panel p-8 md:p-10 rounded-3xl border border-outline-variant/30 space-y-5 text-on-surface-variant leading-relaxed">
 <p>A photo can look ordinary while carrying location information inside its EXIF metadata. Cameras and phones may record latitude, longitude, altitude, and a GPS timestamp at capture time. Editing, exporting, screenshots, and some sharing services can remove those fields. Checking the file before you publish or edit it helps you understand what is actually present.</p>
@@ -182,7 +222,27 @@
 <h2 class="font-display text-2xl font-bold text-primary">Continue with the right tool</h2>
 <div class="grid md:grid-cols-3 gap-4"><a href="/exif-viewer" class="rounded-xl border border-outline-variant/30 p-5 hover:border-secondary"><h3 class="font-bold text-primary mb-1">Check EXIF GPS</h3><p class="text-sm text-on-surface-variant">Read coordinates and camera metadata.</p></a><a href="/image-location-finder" class="rounded-xl border border-outline-variant/30 p-5 hover:border-secondary"><h3 class="font-bold text-primary mb-1">Find photo location</h3><p class="text-sm text-on-surface-variant">Map coordinates already embedded in a file.</p></a><a href="/add-geotag" class="rounded-xl border border-outline-variant/30 p-5 hover:border-secondary"><h3 class="font-bold text-primary mb-1">Add or replace GPS</h3><p class="text-sm text-on-surface-variant">Repair missing or incorrect coordinates.</p></a></div>
 </section>
-</article>
+<section class="space-y-6">
+<h2 class="font-display text-2xl md:text-3xl font-bold text-primary">Frequently Asked Questions</h2>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">How can I tell if a photo has GPS coordinates?</h3>
+<p class="text-on-surface-variant leading-relaxed">Open the photo in the free EXIF viewer. It reads the GPS fields and shows the coordinates and the capture location on a map, or it tells you plainly that no GPS metadata was found.</p>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">Does a missing GPS result mean the photo has no location?</h3>
+<p class="text-on-surface-variant leading-relaxed">No. It only means no GPS data is stored in the file. The photo may still show a recognizable place, and some apps and exports strip metadata: screenshots, for example, do not carry the original photo&apos;s EXIF data.</p>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">Can I check GPS coordinates on my phone?</h3>
+<p class="text-on-surface-variant leading-relaxed">Yes. The EXIF viewer is a web page, so it works in your phone&apos;s browser with no app install. Upload the photo and read the result the same way you would on a computer.</p>
+</div>
+<div class="space-y-2">
+<h3 class="font-bold text-primary">What should I do before sharing a photo publicly?</h3>
+<p class="text-on-surface-variant leading-relaxed">Check it first. If it carries a location you do not want to share, such as your home or a school, share a copy without that metadata instead, and verify the copy in the viewer again before you post it.</p>
+</div>
+</section>
+
+        </article>
 </main>
 <div id="footer-placeholder">
 <footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-12 px-margin-mobile md:px-margin-desktop mt-auto">

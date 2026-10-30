@@ -43,6 +43,8 @@ The site's core subject areas are photo geotagging, GPS coordinates in photos, l
   * [How to Bulk Geotag Photos Online](https://www.geotaggingphotos.com/blog/how-to-bulk-geotag-photos-online): Guide to batch processing up to 500 images simultaneously with instant ZIP export.
   * [What Is Geo Tagging?](https://www.geotaggingphotos.com/blog/what-is-geo-tagging): Beginner guide to photo GPS, EXIF location data, privacy, and adding or checking a geotag.
   * [Free Geotag Photo Editor Online](https://www.geotaggingphotos.com/blog/free-geotag-photo-editor-online): Guide to editing GPS coordinates and EXIF metadata in the browser, batch edits, and verifying results.
+  * [Find Where a Photo Was Taken](https://www.geotaggingphotos.com/blog/how-to-find-where-a-photo-was-taken): Guide to reading EXIF GPS coordinates and mapping a photo&apos;s capture location.
+  * [Remove EXIF and GPS Data](https://www.geotaggingphotos.com/blog/how-to-remove-exif-gps-data-from-photos): Privacy guide to checking, stripping, and verifying photo location metadata before sharing.
 
 ## Photo Geotagging
 
