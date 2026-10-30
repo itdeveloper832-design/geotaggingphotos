@@ -43,7 +43,7 @@
     </style>
 <script src="/components.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/piexifjs@1.0.6/piexif.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js@2.3.0"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="/geotag-exif.js"></script>
 <link rel="manifest" href="/manifest.json" />
@@ -255,6 +255,7 @@
                     </div>
                     <h3 class="font-headline-lg-mobile text-lg font-bold text-primary mb-1">Drag &amp; Drop Photo Here</h3>
                     <p class="font-body-md text-sm text-on-surface-variant mb-5">Supports JPG, JPEG, PNG, WebP (Max 50MB)</p>
+<p class="font-body-md text-sm text-on-surface-variant">Note: uploads are converted to JPEG quality 0.95; transparency is not preserved.</p>
                     <button type="button" onclick="triggerFilePicker()" class="gradient-btn font-label-md text-sm px-5 py-2.5 rounded-lg text-white font-semibold flex items-center gap-2">
                         <span class="material-symbols-outlined text-[18px]">upload_file</span>
                         Browse Files
@@ -1539,6 +1540,7 @@
         showGeoStatus("⏳ Generating geotagged ZIP archive...");
         const zip = new JSZip();
 
+        const failedFiles = [];
         for (let i = 0; i < uploadedImages.length; i++) {
             const imgItem = uploadedImages[i];
             const lat = imgItem.lat || defaultLat;
@@ -1553,7 +1555,7 @@
             let fileName = imgItem.name;
             if (autoRename) {
                 const ext = imgItem.name.split('.').pop() || 'jpg';
-                fileName = `geotagged_photo_${i + 1}.${ext}`;
+                fileName = `geotagged_photo_${i + 1}.jpg`;
             }
 
             try {
@@ -1581,6 +1583,7 @@
                 zip.file(fileName, base64Data, { base64: true });
             } catch (err) {
                 console.error("Error processing bulk image", imgItem.name, err);
+                failedFiles.push(imgItem.name);
             }
         }
 
@@ -1591,7 +1594,7 @@
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        showGeoStatus("✓ ZIP file created and downloaded successfully!");
+        showGeoStatus(failedFiles.length ? ("ZIP downloaded. Skipped \u2014 format not decodable in this browser: " + failedFiles.join(", ")) : "✓ ZIP file created and downloaded successfully!");
     }
 </script>
 </body>
