@@ -18,6 +18,61 @@
       "source": "/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata",
       "destination": "/blog/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata",
       "permanent": true
+    },
+    {
+      "source": "/ADSENSE_PREAPPLICATION_CHECKLIST.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ADSENSE_READINESS_REPORT.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/COMPETITOR_GAP_ANALYSIS.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/KEYWORD_OPPORTUNITIES.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/PROJECT_REQUIREMENTS.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/SEO_IMPLEMENTATION_REPORT.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/SEO_PAGE_MAP.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/TECHNICAL_AUDIT.md",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/onlycompatitorhaveunot.csv",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/onlyyourkeywords.csv",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/youbothhave.csv",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "rewrites": [

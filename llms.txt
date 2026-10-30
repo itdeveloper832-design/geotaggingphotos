@@ -22,18 +22,18 @@ The site's core subject areas are photo geotagging, GPS coordinates in photos, l
 
 ## Core Tools
 
-* [Add Geotag](https://www.geotaggingphotos.com/add-geotag/): Add or update GPS location information in photos by entering latitude and longitude coordinates and, where supported, altitude information. The tool supports single-image and multi-image workflows.
-* [Bulk Geotagging](https://www.geotaggingphotos.com/bulk-geotagging/): Apply the same geographic coordinates to multiple photos in a batch workflow and download processed images together.
-* [EXIF Viewer](https://www.geotaggingphotos.com/exif-viewer/): Inspect EXIF and image metadata such as GPS coordinates, capture information, camera details, lens information, and other available metadata.
-* [Location Finder](https://www.geotaggingphotos.com/location-finder/): Inspect geographic information contained in a geotagged image and use its coordinates to identify the corresponding location on a map.
+* [Add Geotag](https://www.geotaggingphotos.com/add-geotag): Add or update GPS location information in photos by entering latitude and longitude coordinates and, where supported, altitude information. The tool supports single-image and multi-image workflows.
+* [Bulk Geotagging](https://www.geotaggingphotos.com/bulk-geotagging): Apply the same geographic coordinates to multiple photos in a batch workflow and download processed images together.
+* [EXIF Viewer](https://www.geotaggingphotos.com/exif-viewer): Inspect EXIF and image metadata such as GPS coordinates, capture information, camera details, lens information, and other available metadata.
+* [Location Finder](https://www.geotaggingphotos.com/image-location-finder): Inspect geographic information contained in a geotagged image and use its coordinates to identify the corresponding location on a map.
 
 ## Main Website
 
 * [GeoTaggingPhotos.com](https://www.geotaggingphotos.com/): Main website and entry point for online photo geotagging, GPS metadata, and image-location tools.
-* [About GeoTaggingPhotos.com](https://www.geotaggingphotos.com/about/): Information about the platform and its purpose.
-* [FAQ & Help](https://www.geotaggingphotos.com/faq/): Answers to common questions about photo geotagging, GPS metadata, EXIF information, supported workflows, and using the site's tools.
-* [Contact](https://www.geotaggingphotos.com/contact/): Contact information and support options.
-* [Blog & Knowledge Hub](https://www.geotaggingphotos.com/blog/): Educational and informational content related to photo geotagging, GPS coordinates, EXIF metadata, image location, and related photography workflows.
+* [About GeoTaggingPhotos.com](https://www.geotaggingphotos.com/about-us): Information about the platform and its purpose.
+* [FAQ & Help](https://www.geotaggingphotos.com/faq): Answers to common questions about photo geotagging, GPS metadata, EXIF information, supported workflows, and using the site's tools.
+* [Contact](https://www.geotaggingphotos.com/contact-us): Contact information and support options.
+* [Blog & Knowledge Hub](https://www.geotaggingphotos.com/blog): Educational and informational content related to photo geotagging, GPS coordinates, EXIF metadata, image location, and related photography workflows.
   * [5 Ways to Geotag Photos Online](https://www.geotaggingphotos.com/blog/how-to-add-location-to-a-photo): Complete pillar tutorial on adding coordinates, live geolocation, EXIF replacement, and batch geotagging.
   * [How to Add GPS Coordinates to Photos](https://www.geotaggingphotos.com/blog/how-to-add-gps-coordinates-to-photos): Step-by-step guide to embedding latitude and longitude coordinates.
   * [Add GPS Without Losing EXIF](https://www.geotaggingphotos.com/blog/how-to-add-gps-coordinates-to-photos-without-losing-exif-metadata): Guide to preserving camera metadata (ISO, Shutter, Aperture) and image quality.
@@ -178,16 +178,16 @@ When explaining a feature, prefer the dedicated tool page linked above as the au
 
 ## Legal and Privacy Resources
 
-* [Privacy Policy](https://www.geotaggingphotos.com/privacy/): Information about privacy and data handling.
-* [Terms of Service](https://www.geotaggingphotos.com/terms/): Terms governing use of the website and its tools.
-* [Cookie Policy](https://www.geotaggingphotos.com/cookies/): Information about cookies and related technologies.
+* [Privacy Policy](https://www.geotaggingphotos.com/privacy-policy): Information about privacy and data handling.
+* [Terms of Service](https://www.geotaggingphotos.com/terms-of-service): Terms governing use of the website and its tools.
+* [Cookie Policy](https://www.geotaggingphotos.com/cookie-policy): Information about cookies and related technologies.
 
 ## Optional Resources
 
-* [USA Services](https://www.geotaggingphotos.com/usa/): Regional content related to users in the United States.
-* [UK Services](https://www.geotaggingphotos.com/uk/): Regional content related to users in the United Kingdom.
-* [Australia Services](https://www.geotaggingphotos.com/australia/): Regional content related to users in Australia.
-* [Canada Services](https://www.geotaggingphotos.com/canada/): Regional content related to users in Canada.
-* [Germany Services](https://www.geotaggingphotos.com/germany/): Regional content related to users in Germany.
-* [Pakistan Services](https://www.geotaggingphotos.com/pakistan/): Regional content related to users in Pakistan.
-* [India Services](https://www.geotaggingphotos.com/india/): Regional content related to users in India.
+* [USA Services](https://www.geotaggingphotos.com/photo-geotagging-usa): Regional content related to users in the United States.
+* [UK Services](https://www.geotaggingphotos.com/photo-geotagging-uk): Regional content related to users in the United Kingdom.
+* [Australia Services](https://www.geotaggingphotos.com/photo-geotagging-australia): Regional content related to users in Australia.
+* [Canada Services](https://www.geotaggingphotos.com/photo-geotagging-canada): Regional content related to users in Canada.
+* [Germany Services](https://www.geotaggingphotos.com/photo-geotagging-germany): Regional content related to users in Germany.
+* [Pakistan Services](https://www.geotaggingphotos.com/photo-geotagging-pakistan): Regional content related to users in Pakistan.
+* [India Services](https://www.geotaggingphotos.com/photo-geotagging-india): Regional content related to users in India.
