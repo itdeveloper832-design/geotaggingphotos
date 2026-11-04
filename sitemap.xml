@@ -130,6 +130,11 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
+        <loc>https://www.geotaggingphotos.com/remove-exif</loc>
+        <lastmod>2026-11-04</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://www.geotaggingphotos.com/blog/how-to-remove-exif-gps-data-from-photos</loc>
         <lastmod>2026-10-30</lastmod>
         <changefreq>monthly</changefreq>

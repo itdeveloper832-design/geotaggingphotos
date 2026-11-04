@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0JXJVP026Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0JXJVP026Q');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Remove EXIF Data from Photos — Free Online EXIF & GPS Remover</title>
+<meta content="Free online EXIF remover. Strip GPS location, camera, and date metadata from JPEG photos in your browser before sharing — no upload, no quality loss." name="description"/>
+<link rel="canonical" href="https://www.geotaggingphotos.com/remove-exif"/>
+<link rel="icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="shortcut icon" type="image/png" href="/geotaggingphotos.png" />
+<link rel="apple-touch-icon" href="/geotaggingphotos.png" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="google-site-verification" content="vow0IR_605uY_PGLRr5zcCivk_N1dp40r3WmvNFxmL8" />
+<meta name="msvalidate.01" content="207473D434A6B2FA4E2217EFA3CB53DB" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GeoTaggingPhotos.com" />
+<meta property="og:title" content="Remove EXIF Data from Photos — Free Online EXIF & GPS Remover" />
+<meta property="og:description" content="Free online EXIF remover. Strip GPS location, camera, and date metadata from JPEG photos in your browser before sharing — no upload, no quality loss." />
+<meta property="og:url" content="https://www.geotaggingphotos.com/remove-exif" />
+<meta property="og:image" content="https://www.geotaggingphotos.com/geotaggingphotos.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Remove EXIF Data from Photos — Free Online EXIF & GPS Remover" />
+<meta name="twitter:description" content="Free online EXIF remover. Strip GPS location, camera, and date metadata from JPEG photos in your browser before sharing — no upload, no quality loss." />
+<meta name="twitter:image" content="https://www.geotaggingphotos.com/geotaggingphotos.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); }
+        .gradient-btn { background: linear-gradient(135deg, #2563EB, #1D4ED8); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+</style>
+<script src="/components.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js@2.3.0"></script>
+<script src="/exif-parser.js"></script>
+<link rel="manifest" href="/manifest.json" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.geotaggingphotos.com/remove-exif#webapp",
+      "url": "https://www.geotaggingphotos.com/remove-exif",
+      "name": "Remove EXIF Data from Photos",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All modern browsers (Chrome, Safari, Firefox, Edge)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free online EXIF remover. Strip GPS location, camera, and date metadata from JPEG photos entirely in your browser without uploading files.",
+      "browserRequirements": "Requires JavaScript. Supports HTML5 FileReader API."
+    },
+    {
+      "@type": "HowTo",
+      "name": "Remove EXIF and GPS data from a photo",
+      "step": [
+        { "@type": "HowToStep", "name": "Upload a JPEG photo", "text": "Choose a JPEG photo. The tool first shows what EXIF and GPS data the file currently stores." },
+        { "@type": "HowToStep", "name": "Remove the metadata", "text": "Strip the EXIF and XMP metadata segments from the file in your browser. The image pixels are not re-encoded." },
+        { "@type": "HowToStep", "name": "Download and verify the clean copy", "text": "Download the cleaned copy and check it in the EXIF Viewer before sharing, to confirm no GPS data remains." }
+      ]
+    }
+  ]
+}
+</script>
+<meta name="theme-color" content="#2563EB" />
+<script src="/pwa.js" defer></script>
+</head>
+<body class="font-body-lg text-body-lg text-on-surface bg-background min-h-screen flex flex-col pt-16">
+<div id="header-placeholder">
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/20 shadow-sm transition-all duration-400 ease-out-expo" id="navbar">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-3">
+<div class="flex items-center gap-3">
+<a class="font-display text-headline-lg-mobile text-primary tracking-tight scale-105 transition-transform duration-400 ease-out-expo hover:opacity-80 flex items-center gap-2.5 group" href="/" aria-label="GeoTaggingPhotos Homepage">
+<img src="/geotaggingphotos.png" alt="GeoTaggingPhotos Logo" class="w-8 h-8 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105" />
+<span>GeoTaggingPhotos</span>
+</a>
+<div class="network-status-pill hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Online</span>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md hover:bg-white/10 transition-colors duration-400 ease-out-expo px-3 py-2 rounded-lg" href="/">Home</a>
+<div class="relative group">
+<button class="text-on-surface-variant hover:text-primary font-label-md text-label-md hover:bg-white/10 transition-colors duration-400 ease-out-expo px-3 py-2 rounded-lg flex items-center gap-1" aria-haspopup="true" aria-expanded="false" aria-label="Tools menu">
+<span>Tools</span>
+<span class="material-symbols-outlined text-sm" aria-hidden="true">expand_more</span>
+</button>
+<div class="absolute left-0 top-full pt-2 hidden group-hover:block w-56">
+<div class="glass-card rounded-xl p-2 shadow-xl border border-white/40 bg-surface/95 backdrop-blur-md space-y-1">
+<a href="/add-geotag" class="flex items-center gap-2 px-3 py-2 text-sm text-on-surface hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">add_location</span>
+<span>Add Geotag</span>
+</a>
+<a href="/bulk-geotagging" class="flex items-center gap-2 px-3 py-2 text-sm text-on-surface hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">photo_library</span>
+<span>Bulk Geotagging</span>
+</a>
+<a href="/exif-viewer" class="flex items-center gap-2 px-3 py-2 text-sm text-on-surface hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">info</span>
+<span>EXIF Viewer</span>
+</a>
+<a href="/image-location-finder" class="flex items-center gap-2 px-3 py-2 text-sm text-on-surface hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">search</span>
+<span>Location Finder</span>
+</a>
+<a href="/remove-exif" class="flex items-center gap-2 px-3 py-2 text-sm text-on-surface hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">shield</span>
+<span>Remove EXIF</span>
+</a>
+</div>
+</div>
+</div>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md hover:bg-white/10 transition-colors duration-400 ease-out-expo px-3 py-2 rounded-lg" href="/blog">Blog</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md hover:bg-white/10 transition-colors duration-400 ease-out-expo px-3 py-2 rounded-lg" href="/about-us">About Us</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md hover:bg-white/10 transition-colors duration-400 ease-out-expo px-3 py-2 rounded-lg" href="/contact-us">Contact</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md hover:bg-white/10 transition-colors duration-400 ease-out-expo px-3 py-2 rounded-lg" href="/faq">FAQ</a>
+</nav>
+<div class="hidden md:flex items-center gap-3">
+<button id="header-install-btn" type="button" onclick="window.triggerPwaInstall()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-label-md text-sm font-semibold transition-colors border border-secondary/20" aria-label="Install Application">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Install App</span>
+</button>
+<a href="/contact-us" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Support</a>
+<a href="/add-geotag" class="gradient-btn font-label-md text-label-md px-4 py-2 rounded-lg text-white">Get Started</a>
+</div>
+<button class="md:hidden text-primary p-2" id="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" onclick="const m = document.getElementById('mobile-menu'); const isHidden = m.classList.toggle('hidden'); this.setAttribute('aria-expanded', !isHidden);">
+<span class="material-symbols-outlined" aria-hidden="true">menu</span>
+</button>
+</div>
+<div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-outline-variant/30 px-6 py-4 space-y-3" aria-label="Mobile Navigation">
+<a href="/" class="block text-on-surface hover:text-secondary font-medium py-1">Home</a>
+<div class="space-y-1 pl-3 border-l-2 border-outline-variant/30">
+<div class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-wider">Tools</div>
+<a href="/add-geotag" class="block text-sm text-on-surface hover:text-secondary py-1">Add Geotag</a>
+<a href="/bulk-geotagging" class="block text-sm text-on-surface hover:text-secondary py-1">Bulk Geotagging</a>
+<a href="/exif-viewer" class="block text-sm text-on-surface hover:text-secondary py-1">EXIF Viewer</a>
+<a href="/image-location-finder" class="block text-sm text-on-surface hover:text-secondary py-1">Image Location Finder</a>
+<a href="/remove-exif" class="block text-sm text-on-surface hover:text-secondary py-1">Remove EXIF</a>
+</div>
+<div class="space-y-1 pl-3 border-l-2 border-outline-variant/30">
+<div class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-wider">Regional</div>
+<a href="/photo-geotagging-usa" class="block text-sm text-on-surface hover:text-secondary py-1">USA Services</a>
+<a href="/photo-geotagging-uk" class="block text-sm text-on-surface hover:text-secondary py-1">UK Services</a>
+<a href="/photo-geotagging-australia" class="block text-sm text-on-surface hover:text-secondary py-1">Australia Services</a>
+</div>
+<a href="/blog" class="block text-on-surface hover:text-secondary font-medium py-1">Blog</a>
+<a href="/about-us" class="block text-on-surface hover:text-secondary font-medium py-1">About Us</a>
+<a href="/contact-us" class="block text-on-surface hover:text-secondary font-medium py-1">Contact Us</a>
+<a href="/faq" class="block text-on-surface hover:text-secondary font-medium py-1">FAQ & Support</a>
+<div class="pt-2 border-t border-outline-variant/30 space-y-2">
+<button id="mobile-install-btn" type="button" onclick="window.triggerPwaInstall()" class="w-full text-center bg-secondary/10 hover:bg-secondary/20 text-secondary border border-secondary/20 font-label-md py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Install App</span>
+</button>
+<a href="/add-geotag" class="block w-full text-center gradient-btn font-label-md py-2.5 rounded-lg text-white">Get Started Free</a>
+</div>
+</div>
+</header>
+
+
+</div>
+
+<!-- Main Canvas -->
+<main class="flex-grow pt-8 pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="mb-8 text-center max-w-3xl mx-auto">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/20 rounded-full mb-3">
+    <span class="material-symbols-outlined text-sm">shield</span>
+    Privacy Tool &middot; 100% In Your Browser
+</span>
+<h1 class="font-headline-lg text-3xl md:text-4xl font-bold mb-3 text-primary">Remove EXIF &amp; GPS Data from Photos</h1>
+<p class="text-on-surface-variant font-body-md text-base">Strip location, camera, and date metadata from a JPEG before you share it. Your photo is never uploaded &mdash; the cleaning happens entirely in your browser, and the image pixels are not re-encoded, so quality does not change.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-1 flex flex-col gap-6">
+<div class="glass-panel rounded-2xl p-8 border-2 border-dashed border-outline-variant hover:border-secondary transition-colors duration-400 ease-out-expo flex flex-col items-center justify-center text-center cursor-pointer min-h-[220px]" id="drop-zone" onclick="document.getElementById('file-input').click()">
+<input accept="image/jpeg,.jpg,.jpeg" class="hidden" id="file-input" type="file"/>
+<div class="bg-surface-container rounded-full p-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-secondary">upload</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1">Select a JPEG Photo</h2>
+<p class="text-on-surface-variant font-body-md text-sm mb-2">Drag and drop or click to choose</p>
+<p class="text-outline font-mono-data text-xs uppercase">JPEG / JPG only</p>
+</div>
+<p id="file-error" class="hidden text-sm font-bold text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3"></p>
+
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-4">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">visibility</span> What This Photo Stores
+</h3>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-label-md text-sm">GPS location</span>
+<span id="found-gps" class="font-mono-data text-primary font-bold">Select a photo</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-label-md text-sm">Camera</span>
+<span id="found-camera" class="font-mono-data text-primary font-bold">Select a photo</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-label-md text-sm">Date taken</span>
+<span id="found-date" class="font-mono-data text-primary font-bold">Select a photo</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-on-surface-variant font-label-md text-sm">EXIF fields found</span>
+<span id="found-count" class="font-mono-data text-primary font-bold">Select a photo</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant">If no EXIF data is found, the copy is already clean &mdash; there is nothing to remove.</p>
+</div>
+</div>
+
+<div class="md:col-span-2 flex flex-col gap-6">
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-6">
+<h3 class="font-headline-lg text-headline-lg text-primary border-b border-outline-variant/30 pb-4">Clean Copy</h3>
+<div id="preview-empty" class="text-center py-8">
+<p class="text-on-surface-variant font-body-md text-sm">Choose a JPEG photo to see its preview and its clean copy here.</p>
+</div>
+<div id="preview-area" class="hidden flex flex-col gap-5">
+<div class="flex flex-col sm:flex-row gap-5 items-start">
+<img id="preview-img" alt="Selected photo preview" class="w-full sm:w-56 rounded-xl border border-outline-variant/30 object-cover"/>
+<div class="flex-1 space-y-2">
+<p class="font-bold text-primary text-sm" id="file-name">—</p>
+<p class="text-xs text-on-surface-variant" id="file-sizes">—</p>
+<p class="text-xs text-on-surface-variant" id="strip-result">—</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3">
+<button id="remove-btn" type="button" class="gradient-btn font-label-md text-label-md px-6 py-3 rounded-lg text-white flex-1">Remove EXIF &amp; Download Clean Copy</button>
+<button id="reset-btn" type="button" class="px-6 py-3 rounded-lg border border-outline-variant bg-surface text-primary font-semibold text-sm">Choose Another Photo</button>
+</div>
+<div id="download-area" class="hidden rounded-xl border border-outline-variant/30 bg-surface-container-lowest p-4 space-y-3">
+<p class="font-bold text-primary text-sm">Clean copy ready</p>
+<p class="text-xs text-on-surface-variant" id="download-note">—</p>
+<a id="download-link" href="#" download class="gradient-btn font-label-md text-label-md px-5 py-2.5 rounded-lg text-white inline-block">Download Clean Copy</a>
+<a href="/exif-viewer" class="border border-outline-variant bg-surface hover:bg-surface-container text-primary font-semibold px-5 py-2.5 rounded-lg inline-block text-sm">Verify in EXIF Viewer</a>
+<p class="text-xs text-on-surface-variant">Always check the cleaned copy &mdash; not the original &mdash; before sharing. If the viewer still shows coordinates, you opened the wrong file.</p>
+</div>
+</div>
+</div>
+
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-4">
+<h3 class="font-headline-lg text-headline-lg text-primary">What Is Removed &mdash; And What Is Not</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+<div>
+<p class="font-bold text-primary mb-2">Removed</p>
+<ul class="list-disc pl-5 space-y-1 text-on-surface-variant">
+<li>GPS location (latitude, longitude, altitude)</li>
+<li>Camera make, model, lens and shooting settings</li>
+<li>Date and time the photo was taken</li>
+<li>EXIF and XMP metadata segments, plus IPTC and comment segments</li>
+</ul>
+</div>
+<div>
+<p class="font-bold text-primary mb-2">Kept, honestly</p>
+<ul class="list-disc pl-5 space-y-1 text-on-surface-variant">
+<li>The image pixels themselves &mdash; no re-encoding, no quality loss</li>
+<li>JFIF and colour-profile segments, so colours stay as they were</li>
+<li>Nothing visible in the photo itself: faces, signs and landmarks in the picture stay visible</li>
+<li>JPEG only: PNG, WebP and other formats are not cleaned by this tool</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+<h3 class="font-bold text-primary text-base">1. Upload</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Choose a JPEG. The tool first shows exactly what GPS, camera and date data the file stores, so you can see what a stranger would see.</p>
+</div>
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+<h3 class="font-bold text-primary text-base">2. Remove</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">One click strips the metadata segments from the file in your browser. The photo never leaves your device.</p>
+</div>
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 space-y-2">
+<h3 class="font-bold text-primary text-base">3. Verify</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Download the clean copy and open it in the EXIF Viewer. Share only the copy that reports no GPS data.</p>
+</div>
+</div>
+
+<div class="glass-panel rounded-2xl p-8 flex flex-col gap-6">
+<h3 class="font-headline-lg text-headline-lg text-primary">Questions</h3>
+<div class="space-y-4">
+<div>
+<h4 class="font-bold text-primary text-sm">Will removing EXIF change how my photo looks?</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">No. Only metadata segments are removed; the image data is copied unchanged, so there is no re-encoding and no quality loss.</p>
+</div>
+<div>
+<h4 class="font-bold text-primary text-sm">Is my photo uploaded anywhere?</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">No. Everything runs in your browser, the same way the EXIF Viewer and geotagging tools work. Closing the page discards the file.</p>
+</div>
+<div>
+<h4 class="font-bold text-primary text-sm">Why JPEG only?</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">EXIF in the form this tool strips lives in JPEG segments. Other formats store metadata differently, so this tool refuses them rather than pretending to clean them.</p>
+</div>
+<div>
+<h4 class="font-bold text-primary text-sm">Does this hide where the photo was taken from the picture itself?</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">No. It removes hidden metadata only. A visible street sign, landmark or face in the picture itself stays visible &mdash; check the picture, not just its metadata, before posting.</p>
+</div>
+</div>
+</div>
+
+<div class="border-t border-outline-variant/30 pt-10">
+<h2 class="font-display text-2xl font-bold text-primary mb-3">Explore Related Geotagging &amp; Metadata Tools</h2>
+<p class="text-on-surface-variant max-w-3xl mb-6">Check what a photo stores, add or change its location, or find where it was taken:</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<a href="/exif-viewer" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+<div class="flex items-center gap-2 font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-secondary text-lg">info</span>
+<h4>EXIF Viewer</h4>
+</div>
+<p class="text-xs text-on-surface-variant">Inspect camera metadata and GPS tags before and after cleaning, to verify the clean copy.</p>
+</a>
+<a href="/add-geotag" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+<div class="flex items-center gap-2 font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-secondary text-lg">add_location_alt</span>
+<h4>Add GPS Coordinates</h4>
+</div>
+<p class="text-xs text-on-surface-variant">Inject precise latitude, longitude, and custom EXIF tags with interactive map pin placement.</p>
+</a>
+<a href="/image-location-finder" class="p-5 rounded-xl border border-outline-variant/30 bg-surface hover:border-secondary transition-all hover:shadow-sm">
+<div class="flex items-center gap-2 font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-secondary text-lg">travel_explore</span>
+<h4>Photo Location Finder</h4>
+</div>
+<p class="text-xs text-on-surface-variant">Display exact photo capture coordinates and reverse lookup street addresses on satellite maps.</p>
+</a>
+</div>
+<p class="text-sm text-on-surface-variant mt-6">Prefer a written walkthrough? Read <a href="/blog/how-to-remove-exif-gps-data-from-photos" class="text-secondary font-semibold hover:underline">how to remove EXIF and GPS data from photos</a>, which covers the same check, remove and verify routine.</p>
+</div>
+</div>
+</div>
+<script>
+var selectedFile = null;
+var cleanedUrl = null;
+var cleanedBlob = null;
+function showError(msg) {
+  var el = document.getElementById('file-error');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+function hideError() {
+  document.getElementById('file-error').classList.add('hidden');
+}
+function formatBytes(n) {
+  if (n < 1024) return n + ' bytes';
+  if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+  return (n / (1024 * 1024)).toFixed(2) + ' MB';
+}
+/* Strip JPEG metadata segments (EXIF APP1, XMP APP1, IPTC APP13, COM)
+   and keep everything else byte-for-byte, including the image data.
+   Returns a new ArrayBuffer. Throws on non-JPEG or truncated input. */
+function stripJpegMetadata(inputBuffer) {
+  var bytes = new Uint8Array(inputBuffer);
+  if (bytes.length < 4 || bytes[0] !== 0xFF || bytes[1] !== 0xD8) {
+    throw new Error('Not a JPEG file (missing SOI marker).');
+  }
+  var out = [];
+  out.push(0xFF, 0xD8);
+  var offset = 2;
+  while (offset + 1 < bytes.length) {
+    if (bytes[offset] !== 0xFF) throw new Error('Corrupt JPEG: expected a marker.');
+    var code = bytes[offset + 1];
+    if (code === 0xD9) { out.push(0xFF, 0xD9); offset += 2; break; }
+    if (code === 0x01 || (code >= 0xD0 && code <= 0xD7)) { out.push(0xFF, code); offset += 2; continue; }
+    if (offset + 3 >= bytes.length) throw new Error('Truncated JPEG segment.');
+    var len = (bytes[offset + 2] << 8) | bytes[offset + 3];
+    if (len < 2 || offset + 2 + len > bytes.length) throw new Error('Truncated JPEG segment.');
+    var segStart = offset;
+    var segEnd = offset + 2 + len;
+    var drop = false;
+    if (code === 0xE1) {
+      // APP1: EXIF ("Exif\0\0") or XMP ("http://ns.adobe.com/xap/1.0/\0")
+      var id = '';
+      for (var i = offset + 4; i < Math.min(segEnd, offset + 36); i++) {
+        if (bytes[i] === 0) break;
+        id += String.fromCharCode(bytes[i]);
+      }
+      if (id.indexOf('Exif') === 0 || id.indexOf('http://ns.adobe.com/xap/') === 0) drop = true;
+    } else if (code === 0xED || code === 0xFE) {
+      // APP13 (Photoshop/IPTC) and COM comments can also carry text/location.
+      drop = true;
+    }
+    if (code === 0xDA) {
+      // Start of scan: copy this segment header plus ALL remaining bytes verbatim.
+      for (var j = segStart; j < bytes.length; j++) out.push(bytes[j]);
+      offset = bytes.length;
+      break;
+    }
+    if (!drop) {
+      for (var k = segStart; k < segEnd; k++) out.push(bytes[k]);
+    }
+    offset = segEnd;
+  }
+  return new Uint8Array(out).buffer;
+}
+function countExifSegments(inputBuffer) {
+  var bytes = new Uint8Array(inputBuffer);
+  var count = 0, offset = 2;
+  while (offset + 3 < bytes.length) {
+    if (bytes[offset] !== 0xFF) break;
+    var code = bytes[offset + 1];
+    if (code === 0xD9) break;
+    if (code === 0x01 || (code >= 0xD0 && code <= 0xD7)) { offset += 2; continue; }
+    var len = (bytes[offset + 2] << 8) | bytes[offset + 3];
+    if (len < 2 || offset + 2 + len > bytes.length) break;
+    if (code === 0xE1) {
+      var id = '';
+      for (var i = offset + 4; i < Math.min(offset + 2 + len, offset + 36); i++) {
+        if (bytes[i] === 0) break;
+        id += String.fromCharCode(bytes[i]);
+      }
+      if (id.indexOf('Exif') === 0) count++;
+    }
+    if (code === 0xDA) break;
+    offset += 2 + len;
+  }
+  return count;
+}
+function handleFile(file) {
+  hideError();
+  if (!file) return;
+  var isJpeg = file.type === 'image/jpeg' || /\.jpe?g$/i.test(file.name);
+  if (!isJpeg) {
+    showError('This tool cleans JPEG photos only. Please choose a .jpg or .jpeg file.');
+    return;
+  }
+  selectedFile = file;
+  cleanedUrl = null; cleanedBlob = null;
+  document.getElementById('download-area').classList.add('hidden');
+  document.getElementById('preview-empty').classList.add('hidden');
+  document.getElementById('preview-area').classList.remove('hidden');
+  document.getElementById('file-name').textContent = file.name;
+  document.getElementById('file-sizes').textContent = 'Original: ' + formatBytes(file.size);
+  document.getElementById('strip-result').textContent = 'Press “Remove EXIF & Download Clean Copy” to strip the metadata.';
+  var reader = new FileReader();
+  reader.onload = function (e) { document.getElementById('preview-img').src = e.target.result; };
+  reader.readAsDataURL(file);
+  document.getElementById('found-gps').textContent = 'Checking…';
+  document.getElementById('found-camera').textContent = 'Checking…';
+  document.getElementById('found-date').textContent = 'Checking…';
+  document.getElementById('found-count').textContent = 'Checking…';
+  if (typeof parsePhotoExifData === 'function') {
+    parsePhotoExifData(file, function (data) {
+      if (!data) {
+        document.getElementById('found-gps').textContent = 'No EXIF found';
+        document.getElementById('found-camera').textContent = '—';
+        document.getElementById('found-date').textContent = '—';
+        document.getElementById('found-count').textContent = '0';
+        return;
+      }
+      document.getElementById('found-gps').textContent = data.hasGps ? (data.latFormatted + ', ' + data.lngFormatted) : 'No GPS data';
+      var cam = [data.make, data.model].filter(function (x) { return x && x !== 'Unknown'; }).join(' ');
+      document.getElementById('found-camera').textContent = cam || 'Not stored';
+      document.getElementById('found-date').textContent = (data.dateTaken && data.dateTaken !== 'N/A') ? data.dateTaken : 'Not stored';
+      var tags = data.rawTags ? Object.keys(data.rawTags).length : 0;
+      document.getElementById('found-count').textContent = String(tags);
+    });
+  } else {
+    document.getElementById('found-gps').textContent = 'Checker unavailable';
+    document.getElementById('found-camera').textContent = '—';
+    document.getElementById('found-date').textContent = '—';
+    document.getElementById('found-count').textContent = '—';
+  }
+}
+document.getElementById('file-input').addEventListener('change', function (e) {
+  if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+});
+var dropZone = document.getElementById('drop-zone');
+['dragover', 'dragenter'].forEach(function (ev) {
+  dropZone.addEventListener(ev, function (e) { e.preventDefault(); });
+});
+dropZone.addEventListener('drop', function (e) {
+  e.preventDefault();
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+document.getElementById('remove-btn').addEventListener('click', function () {
+  if (!selectedFile) { showError('Choose a JPEG photo first.'); return; }
+  hideError();
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    try {
+      var before = countExifSegments(e.target.result);
+      var cleaned = stripJpegMetadata(e.target.result);
+      var after = countExifSegments(cleaned);
+      cleanedBlob = new Blob([cleaned], { type: 'image/jpeg' });
+      if (cleanedUrl) URL.revokeObjectURL(cleanedUrl);
+      cleanedUrl = URL.createObjectURL(cleanedBlob);
+      var base = selectedFile.name.replace(/\.jpe?g$/i, '');
+      var link = document.getElementById('download-link');
+      link.href = cleanedUrl;
+      link.download = base + '-clean.jpg';
+      document.getElementById('file-sizes').textContent = 'Original: ' + formatBytes(selectedFile.size) + ' · Clean copy: ' + formatBytes(cleanedBlob.size);
+      document.getElementById('strip-result').textContent = 'EXIF segments removed: ' + before + ' → ' + after + ' remaining. Pixels were not re-encoded.';
+      document.getElementById('download-note').textContent = 'Clean copy: ' + formatBytes(cleanedBlob.size) + ' (was ' + formatBytes(selectedFile.size) + '). Verify it in the EXIF Viewer before sharing.';
+      document.getElementById('download-area').classList.remove('hidden');
+    } catch (err) {
+      showError('Could not clean this file: ' + err.message);
+    }
+  };
+  reader.readAsArrayBuffer(selectedFile);
+});
+document.getElementById('reset-btn').addEventListener('click', function () {
+  selectedFile = null;
+  document.getElementById('file-input').value = '';
+  document.getElementById('preview-area').classList.add('hidden');
+  document.getElementById('preview-empty').classList.remove('hidden');
+  document.getElementById('download-area').classList.add('hidden');
+  document.getElementById('found-gps').textContent = 'Select a photo';
+  document.getElementById('found-camera').textContent = 'Select a photo';
+  document.getElementById('found-date').textContent = 'Select a photo';
+  document.getElementById('found-count').textContent = 'Select a photo';
+  hideError();
+});
+</script>
+</main>
+
+
+<div id="footer-placeholder">
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-12 px-margin-mobile md:px-margin-desktop mt-auto">
+<div class="max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter">
+<div class="col-span-2 lg:col-span-2 flex flex-col gap-4">
+<a href="/" class="font-display text-headline-lg-mobile text-primary hover:opacity-80 transition-opacity flex items-center gap-2.5 group" aria-label="GeoTaggingPhotos Homepage">
+<img src="/geotaggingphotos.png" alt="GeoTaggingPhotos Logo" class="w-8 h-8 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105" />
+<span>GeoTaggingPhotos</span>
+</a>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                    Professional metadata management tools for modern workflows.
+                </p>
+
+<p class="text-xs text-on-surface-variant mt-2">Independent browser tools for photo GPS and metadata workflows.</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-3">
+                    © 2026 GeoTaggingPhotos. All rights reserved.
+                </p>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h3 class="font-label-md text-label-md text-primary font-bold">Tools</h3>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/add-geotag">Add Geotag</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/remove-exif">Remove EXIF</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h3 class="font-label-md text-label-md text-primary font-bold">Company</h3>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/about-us">About Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/blog">Blog</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact-us">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/faq">FAQ &amp; Help</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h3 class="font-label-md text-label-md text-primary font-bold">Regional</h3>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-usa">USA Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-uk">UK Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-australia">Australia Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-canada">Canada Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-germany">Germany Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-pakistan">Pakistan Services</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/photo-geotagging-india">India Services</a>
+</div>
+<div class="col-span-1 lg:col-span-1 flex flex-col gap-3">
+<h3 class="font-label-md text-label-md text-primary font-bold">Legal</h3>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/terms-of-service">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/cookie-policy">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</div>
+
+</body>
+</html>

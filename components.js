@@ -97,6 +97,10 @@ function getHeaderFallbackHTML() {
 <span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">search</span>
 <span>Location Finder</span>
 </a>
+<a href="/remove-exif" class="flex items-center gap-2 px-3 py-2 text-sm text-on-surface hover:bg-secondary/10 hover:text-secondary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">shield</span>
+<span>Remove EXIF</span>
+</a>
 </div>
 </div>
 </div>
@@ -125,6 +129,7 @@ function getHeaderFallbackHTML() {
 <a href="/bulk-geotagging" class="block text-sm text-on-surface hover:text-secondary py-1">Bulk Geotagging</a>
 <a href="/exif-viewer" class="block text-sm text-on-surface hover:text-secondary py-1">EXIF Viewer</a>
 <a href="/image-location-finder" class="block text-sm text-on-surface hover:text-secondary py-1">Image Location Finder</a>
+<a href="/remove-exif" class="block text-sm text-on-surface hover:text-secondary py-1">Remove EXIF</a>
 </div>
 <div class="space-y-1 pl-3 border-l-2 border-outline-variant/30">
 <div class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-wider">Regional</div>
@@ -170,6 +175,7 @@ function getFooterFallbackHTML() {
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/bulk-geotagging">Bulk Geotagging</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/exif-viewer">EXIF Viewer</a>
 <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/image-location-finder">Location Finder</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="/remove-exif">Remove EXIF</a>
 <button id="footer-install-btn" type="button" onclick="window.triggerPwaInstall()" class="font-body-md text-body-md text-secondary hover:underline font-semibold flex items-center gap-1 mt-1 text-left">
 <span class="material-symbols-outlined text-sm">download</span>
 <span>Install GeotaggingPhotos</span>
